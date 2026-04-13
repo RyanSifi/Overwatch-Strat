@@ -1,0 +1,849 @@
+[
+  {
+    "model": "heroes.hero",
+    "pk": 1,
+    "fields": {
+      "name": "D.Va",
+      "slug": "dva",
+      "role": "tank",
+      "subrole": "initiator",
+      "tier": "A",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "junkrat": 10, "bastion": 15, "pharah": 12, "torbjorn": 10, "symmetra": 8,
+        "zarya": -12, "roadhog": -8, "ana": -5, "cassidy": -8, "soldier-76": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 2,
+    "fields": {
+      "name": "Doomfist",
+      "slug": "doomfist",
+      "role": "tank",
+      "subrole": "initiator",
+      "tier": "D",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "moira": 8, "lucio": 10, "tracer": 5,
+        "ana": -15, "cassidy": -12, "roadhog": -10, "mei": -8, "sombra": -12, "sigma": -10
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 3,
+    "fields": {
+      "name": "Hazard",
+      "slug": "hazard",
+      "role": "tank",
+      "subrole": "bruiser",
+      "tier": "B",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "reinhardt": 8, "roadhog": 5, "mauga": 5,
+        "symmetra": -10, "torbjorn": -8, "ana": -8, "sombra": -10
+      },
+      "is_new": true,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 4,
+    "fields": {
+      "name": "Junker Queen",
+      "slug": "junker-queen",
+      "role": "tank",
+      "subrole": "bruiser",
+      "tier": "C",
+      "styles": ["brawl"],
+      "counters": {
+        "roadhog": 8, "reinhardt": 5,
+        "ana": -12, "sigma": -8, "zarya": -10, "ramattra": -5, "orisa": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 5,
+    "fields": {
+      "name": "Mauga",
+      "slug": "mauga",
+      "role": "tank",
+      "subrole": "bruiser",
+      "tier": "B",
+      "styles": ["brawl"],
+      "counters": {
+        "zarya": 10, "juno": 8, "lucio": 5,
+        "ana": -12, "zenyatta": -8, "sombra": -10, "sigma": -5, "dva": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 6,
+    "fields": {
+      "name": "Orisa",
+      "slug": "orisa",
+      "role": "tank",
+      "subrole": "stalwart",
+      "tier": "B",
+      "styles": ["poke"],
+      "counters": {
+        "dva": 8, "roadhog": 10, "reinhardt": 8, "doomfist": 8,
+        "mauga": -5, "zarya": -8, "ramattra": -8, "sigma": -10, "reaper": -12
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 7,
+    "fields": {
+      "name": "Ramattra",
+      "slug": "ramattra",
+      "role": "tank",
+      "subrole": "stalwart",
+      "tier": "A",
+      "styles": ["brawl", "poke"],
+      "counters": {
+        "orisa": 8, "zarya": 8, "mauga": 5, "reinhardt": 5,
+        "dva": -8, "winston": -5, "sigma": -8, "wrecking-ball": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 8,
+    "fields": {
+      "name": "Reinhardt",
+      "slug": "reinhardt",
+      "role": "tank",
+      "subrole": "stalwart",
+      "tier": "B",
+      "styles": ["brawl"],
+      "counters": {
+        "roadhog": 8, "mauga": 5,
+        "pharah": -15, "junkrat": -10, "bastion": -12, "zarya": -5,
+        "hazard": -8, "reaper": -10, "symmetra": -10, "echo": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 9,
+    "fields": {
+      "name": "Roadhog",
+      "slug": "roadhog",
+      "role": "tank",
+      "subrole": "bruiser",
+      "tier": "C",
+      "styles": ["brawl"],
+      "counters": {
+        "dva": 8, "doomfist": 10, "genji": 5,
+        "junkrat": -8, "cassidy": -5, "sombra": -10, "bastion": -5, "reinhardt": -8, "ana": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 10,
+    "fields": {
+      "name": "Sigma",
+      "slug": "sigma",
+      "role": "tank",
+      "subrole": "stalwart",
+      "tier": "S",
+      "styles": ["poke", "brawl"],
+      "counters": {
+        "pharah": 10, "junkrat": 8, "mauga": 5, "dva": 8, "doomfist": 10, "echo": 5, "bastion": 5,
+        "wrecking-ball": -5, "reaper": -8, "sombra": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 11,
+    "fields": {
+      "name": "Winston",
+      "slug": "winston",
+      "role": "tank",
+      "subrole": "initiator",
+      "tier": "A",
+      "styles": ["dive"],
+      "counters": {
+        "tracer": 10, "genji": 10, "zenyatta": 15, "widowmaker": 12, "ana": 5,
+        "ana": -8, "cassidy": -10, "roadhog": -5, "zarya": -10, "reaper": -15
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 12,
+    "fields": {
+      "name": "Wrecking Ball",
+      "slug": "wrecking-ball",
+      "role": "tank",
+      "subrole": "initiator",
+      "tier": "A",
+      "styles": ["dive"],
+      "counters": {
+        "tracer": 8, "zenyatta": 12, "widowmaker": 10, "ana": 5,
+        "sombra": -15, "cassidy": -10, "ana": -8, "bastion": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 13,
+    "fields": {
+      "name": "Zarya",
+      "slug": "zarya",
+      "role": "tank",
+      "subrole": "bruiser",
+      "tier": "S",
+      "styles": ["brawl", "poke"],
+      "counters": {
+        "dva": 12, "doomfist": 8, "genji": 5, "tracer": 8, "roadhog": 5, "winston": 10, "wrecking-ball": 8,
+        "sigma": -5, "ramattra": -8, "sombra": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 14,
+    "fields": {
+      "name": "Domina",
+      "slug": "domina",
+      "role": "tank",
+      "subrole": "stalwart",
+      "tier": "S",
+      "styles": ["poke", "brawl"],
+      "counters": {
+        "pharah": 12, "echo": 8, "dva": 5, "junkrat": 8, "bastion": 10,
+        "genji": -5, "tracer": -8, "sombra": -10, "reaper": -8
+      },
+      "is_new": true,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 15,
+    "fields": {
+      "name": "Ashe",
+      "slug": "ashe",
+      "role": "dps",
+      "subrole": "sharpshooter",
+      "tier": "B",
+      "styles": ["poke"],
+      "counters": {
+        "pharah": 10, "dva": 5, "echo": 8, "reinhardt": 8, "orisa": 5,
+        "widowmaker": -5, "genji": -8, "tracer": -8, "wrecking-ball": -10
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 16,
+    "fields": {
+      "name": "Bastion",
+      "slug": "bastion",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "D",
+      "styles": ["poke"],
+      "counters": {
+        "reinhardt": 12, "orisa": 8,
+        "dva": -15, "genji": -8, "tracer": -10, "sigma": -8, "wrecking-ball": -8, "sombra": -12
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 17,
+    "fields": {
+      "name": "Cassidy",
+      "slug": "cassidy",
+      "role": "dps",
+      "subrole": "recon",
+      "tier": "A",
+      "styles": ["poke", "brawl"],
+      "counters": {
+        "genji": 12, "tracer": 10, "wrecking-ball": 10, "echo": 8, "doomfist": 12, "fika": 10,
+        "dva": -5, "pharah": -8, "sigma": -5, "roadhog": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 18,
+    "fields": {
+      "name": "Echo",
+      "slug": "echo",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "B",
+      "styles": ["dive", "poke"],
+      "counters": {
+        "reinhardt": 10, "orisa": 8, "roadhog": 5,
+        "sigma": -8, "dva": -5, "cassidy": -8, "soldier-76": -5, "domina": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 19,
+    "fields": {
+      "name": "Genji",
+      "slug": "genji",
+      "role": "dps",
+      "subrole": "flanker",
+      "tier": "A",
+      "styles": ["dive"],
+      "counters": {
+        "zenyatta": 10, "mercy": 15, "moira": 8, "ana": 5,
+        "ana": -12, "cassidy": -12, "roadhog": -8, "brigitte": -15, "mei": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 20,
+    "fields": {
+      "name": "Hanzo",
+      "slug": "hanzo",
+      "role": "dps",
+      "subrole": "sharpshooter",
+      "tier": "B",
+      "styles": ["poke"],
+      "counters": {
+        "reinhardt": 12, "dva": 8, "orisa": 5,
+        "winston": -5, "wrecking-ball": -8, "pharah": -5, "widowmaker": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 21,
+    "fields": {
+      "name": "Junkrat",
+      "slug": "junkrat",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "D",
+      "styles": ["brawl"],
+      "counters": {
+        "reinhardt": 10, "roadhog": -8, "dva": -10,
+        "orisa": -8, "sigma": -8, "wrecking-ball": -8, "pharah": -12
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 22,
+    "fields": {
+      "name": "Mei",
+      "slug": "mei",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "D",
+      "styles": ["brawl"],
+      "counters": {
+        "roadhog": 8, "doomfist": 8, "genji": 5, "hazard": 5,
+        "tracer": -5, "pharah": -15, "dva": -8, "echo": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 23,
+    "fields": {
+      "name": "Pharah",
+      "slug": "pharah",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "C",
+      "styles": ["poke"],
+      "counters": {
+        "reinhardt": 15, "roadhog": 12, "reaper": 8,
+        "sigma": -10, "cassidy": -12, "soldier-76": -10, "dva": -12, "domina": -12
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 24,
+    "fields": {
+      "name": "Reaper",
+      "slug": "reaper",
+      "role": "dps",
+      "subrole": "flanker",
+      "tier": "B",
+      "styles": ["brawl"],
+      "counters": {
+        "roadhog": 15, "orisa": 12, "reinhardt": 10, "mauga": 8,
+        "pharah": -15, "sigma": -10, "dva": -10, "echo": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 25,
+    "fields": {
+      "name": "Soldier: 76",
+      "slug": "soldier-76",
+      "role": "dps",
+      "subrole": "recon",
+      "tier": "B",
+      "styles": ["poke"],
+      "counters": {
+        "pharah": 10, "dva": 5, "roadhog": 8, "orisa": 5,
+        "genji": -5, "tracer": -8, "wrecking-ball": -5, "echo": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 26,
+    "fields": {
+      "name": "Sojourn",
+      "slug": "sojourn",
+      "role": "dps",
+      "subrole": "sharpshooter",
+      "tier": "S",
+      "styles": ["poke"],
+      "counters": {
+        "dva": 8, "pharah": 8, "reinhardt": 10, "roadhog": 5, "orisa": 8,
+        "widowmaker": -5, "sigma": -5, "wrecking-ball": -8, "tracer": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 27,
+    "fields": {
+      "name": "Sombra",
+      "slug": "sombra",
+      "role": "dps",
+      "subrole": "flanker",
+      "tier": "C",
+      "styles": ["dive"],
+      "counters": {
+        "wrecking-ball": 15, "doomfist": 12, "roadhog": 10, "mauga": 10, "dva": 5,
+        "pharah": -5, "sigma": -8, "zarya": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 28,
+    "fields": {
+      "name": "Symmetra",
+      "slug": "symmetra",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "D",
+      "styles": ["brawl"],
+      "counters": {
+        "reinhardt": 10, "roadhog": 8,
+        "dva": -5, "tracer": -5, "genji": -10, "pharah": -12, "echo": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 29,
+    "fields": {
+      "name": "Torbjörn",
+      "slug": "torbjorn",
+      "role": "dps",
+      "subrole": "specialist",
+      "tier": "D",
+      "styles": ["poke"],
+      "counters": {
+        "reinhardt": 8, "roadhog": 5,
+        "pharah": -12, "dva": -10, "echo": -8, "wrecking-ball": -10
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 30,
+    "fields": {
+      "name": "Tracer",
+      "slug": "tracer",
+      "role": "dps",
+      "subrole": "flanker",
+      "tier": "A",
+      "styles": ["dive"],
+      "counters": {
+        "zenyatta": 12, "ana": 8, "mercy": 15, "moira": 8,
+        "cassidy": -10, "soldier-76": -8, "brigitte": -12, "roadhog": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 31,
+    "fields": {
+      "name": "Venture",
+      "slug": "venture",
+      "role": "dps",
+      "subrole": "flanker",
+      "tier": "S",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "mei": 8, "roadhog": 8, "reinhardt": 5, "mauga": 5,
+        "sigma": -8, "cassidy": -10, "ana": -8, "brigitte": -10
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 32,
+    "fields": {
+      "name": "Widowmaker",
+      "slug": "widowmaker",
+      "role": "dps",
+      "subrole": "sharpshooter",
+      "tier": "C",
+      "styles": ["poke"],
+      "counters": {
+        "reinhardt": 15, "orisa": 10, "mauga": 5,
+        "sigma": -5, "dva": -12, "winston": -12, "wrecking-ball": -10, "pharah": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 33,
+    "fields": {
+      "name": "Anran",
+      "slug": "anran",
+      "role": "dps",
+      "subrole": "recon",
+      "tier": "A",
+      "styles": ["poke", "brawl"],
+      "counters": {
+        "pharah": 12, "dva": 8, "echo": 5, "orisa": 5,
+        "tracer": -5, "genji": -8, "wrecking-ball": -8
+      },
+      "is_new": true,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 34,
+    "fields": {
+      "name": "Fika",
+      "slug": "fika",
+      "role": "dps",
+      "subrole": "flanker",
+      "tier": "C",
+      "styles": ["dive"],
+      "counters": {
+        "zenyatta": 10, "mercy": 12, "ana": 5, "moira": 8,
+        "cassidy": -10, "brigitte": -12, "roadhog": -8
+      },
+      "is_new": true,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 35,
+    "fields": {
+      "name": "Ana",
+      "slug": "ana",
+      "role": "support",
+      "subrole": "tactician",
+      "tier": "S",
+      "styles": ["poke", "brawl"],
+      "counters": {
+        "roadhog": 15, "mauga": 12, "doomfist": 15, "junker-queen": 12, "orisa": 8,
+        "tracer": -8, "genji": -12, "wrecking-ball": -5, "dive_comps": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 36,
+    "fields": {
+      "name": "Baptiste",
+      "slug": "baptiste",
+      "role": "support",
+      "subrole": "medic",
+      "tier": "B",
+      "styles": ["poke"],
+      "counters": {
+        "pharah": 8, "dva": 5, "orisa": 5, "roadhog": 5,
+        "genji": -5, "tracer": -8, "wrecking-ball": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 37,
+    "fields": {
+      "name": "Brigitte",
+      "slug": "brigitte",
+      "role": "support",
+      "subrole": "survivor",
+      "tier": "C",
+      "styles": ["brawl"],
+      "counters": {
+        "tracer": 12, "genji": 12, "fika": 12, "sombra": 5,
+        "reaper": -5, "pharah": -10, "roadhog": -8, "echo": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 38,
+    "fields": {
+      "name": "Illari",
+      "slug": "illari",
+      "role": "support",
+      "subrole": "medic",
+      "tier": "B",
+      "styles": ["poke"],
+      "counters": {
+        "pharah": 5, "dva": 5, "reinhardt": 5,
+        "genji": -8, "tracer": -10, "wrecking-ball": -8, "sombra": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 39,
+    "fields": {
+      "name": "Juno",
+      "slug": "juno",
+      "role": "support",
+      "subrole": "medic",
+      "tier": "A",
+      "styles": ["dive", "poke"],
+      "counters": {
+        "mauga": 8, "pharah": 8, "dva": 5, "roadhog": 5, "orisa": 5,
+        "genji": -5, "sombra": -8, "cassidy": -5
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 40,
+    "fields": {
+      "name": "Kiriko",
+      "slug": "kiriko",
+      "role": "support",
+      "subrole": "survivor",
+      "tier": "S",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "genji": 8, "tracer": 5, "doomfist": 5, "sombra": 8,
+        "roadhog": -5, "ana": -8, "cassidy": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 41,
+    "fields": {
+      "name": "Lifeweaver",
+      "slug": "lifeweaver",
+      "role": "support",
+      "subrole": "tactician",
+      "tier": "C",
+      "styles": ["poke"],
+      "counters": {
+        "roadhog": 5, "doomfist": 8,
+        "genji": -5, "tracer": -8, "pharah": -5, "sombra": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 42,
+    "fields": {
+      "name": "Lucio",
+      "slug": "lucio",
+      "role": "support",
+      "subrole": "tactician",
+      "tier": "A",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "reinhardt": 8, "orisa": 8, "roadhog": 5, "doomfist": 10,
+        "pharah": -5, "widowmaker": -5, "sombra": -8
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 43,
+    "fields": {
+      "name": "Mercy",
+      "slug": "mercy",
+      "role": "support",
+      "subrole": "medic",
+      "tier": "C",
+      "styles": ["poke"],
+      "counters": {
+        "pharah": 10, "echo": 12,
+        "reaper": -5, "genji": -5, "tracer": -8, "widowmaker": -10, "sombra": -12
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 44,
+    "fields": {
+      "name": "Moira",
+      "slug": "moira",
+      "role": "support",
+      "subrole": "medic",
+      "tier": "D",
+      "styles": ["brawl"],
+      "counters": {
+        "tracer": 5, "reaper": -5,
+        "pharah": -12, "ana": -5, "sigma": -5, "sombra": -10
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 45,
+    "fields": {
+      "name": "Zenyatta",
+      "slug": "zenyatta",
+      "role": "support",
+      "subrole": "tactician",
+      "tier": "A",
+      "styles": ["poke"],
+      "counters": {
+        "roadhog": 10, "orisa": 8, "dva": 5, "mauga": 5, "reinhardt": 5,
+        "tracer": -12, "wrecking-ball": -12, "genji": -10, "sombra": -10
+      },
+      "is_new": false,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 46,
+    "fields": {
+      "name": "Mizuki",
+      "slug": "mizuki",
+      "role": "support",
+      "subrole": "tactician",
+      "tier": "B",
+      "styles": ["poke", "brawl"],
+      "counters": {
+        "roadhog": 8, "mauga": 5, "orisa": 5, "reinhardt": 5,
+        "tracer": -8, "genji": -5, "sombra": -8, "wrecking-ball": -8
+      },
+      "is_new": true,
+      "icon_url": ""
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 47,
+    "fields": {
+      "name": "Emre",
+      "slug": "emre",
+      "role": "support",
+      "subrole": "survivor",
+      "tier": "C",
+      "styles": ["dive", "brawl"],
+      "counters": {
+        "genji": 5, "tracer": 5, "doomfist": 8,
+        "pharah": -8, "sombra": -10, "roadhog": -5, "cassidy": -8
+      },
+      "is_new": true,
+      "icon_url": ""
+    }
+  }
+]

@@ -1,0 +1,700 @@
+[
+  {
+    "model": "heroes.map",
+    "pk": 1,
+    "fields": {
+      "name": "Dorado",
+      "slug": "dorado",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Point de départ",
+          "style": "poke",
+          "notes": "Long couloir ouvert avec sightlines en attaque. Poke dominant.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "ashe", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Virage de la montagne",
+          "style": "brawl",
+          "notes": "Couloirs serrés, combat rapproché favorisé.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Arrivée finale",
+          "style": "brawl",
+          "notes": "Espace ouvert mais défense en hauteur. Mix brawl/poke.",
+          "recommended": {
+            "tank": ["zarya", "sigma"],
+            "dps": ["sojourn", "reaper"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 2,
+    "fields": {
+      "name": "Havana",
+      "slug": "havana",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Rue principale",
+          "style": "poke",
+          "notes": "Très longues sightlines en ligne droite. Sniper/poke favorisé.",
+          "recommended": {
+            "tank": ["sigma", "domina"],
+            "dps": ["sojourn", "ashe", "widowmaker"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Carrefour central",
+          "style": "brawl",
+          "notes": "Croisements multiples, flancs possibles. Combat mixte.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["cassidy", "soldier-76"],
+            "support": ["ana", "kiriko"]
+          }
+        },
+        {
+          "name": "Entrepôt final",
+          "style": "brawl",
+          "notes": "Zone fermée avec peu d'espace. Brawl optimal.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["lucio", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 3,
+    "fields": {
+      "name": "Junkertown",
+      "slug": "junkertown",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Entrée de ville",
+          "style": "poke",
+          "notes": "Longue avenue avec hauteurs défensives. Poke recommandé.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["ashe", "sojourn"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Marché",
+          "style": "brawl",
+          "notes": "Couloirs étroits et couverts multiples. Brawl efficace.",
+          "recommended": {
+            "tank": ["zarya", "reinhardt"],
+            "dps": ["reaper", "junkrat"],
+            "support": ["lucio", "ana"]
+          }
+        },
+        {
+          "name": "Palais final",
+          "style": "brawl",
+          "notes": "Défense sur hauteurs, attaque doit brawl ou dive.",
+          "recommended": {
+            "tank": ["zarya", "winston"],
+            "dps": ["tracer", "sojourn"],
+            "support": ["kiriko", "ana"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 4,
+    "fields": {
+      "name": "Rialto",
+      "slug": "rialto",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Canal",
+          "style": "poke",
+          "notes": "Open water area, sightlines longues sur le pont.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Ruelle",
+          "style": "brawl",
+          "notes": "Passages étroits, choke en sortie de tunnel.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Place finale",
+          "style": "poke",
+          "notes": "Grande place ouverte, défense depuis les arcades.",
+          "recommended": {
+            "tank": ["sigma", "zarya"],
+            "dps": ["sojourn", "ashe"],
+            "support": ["ana", "zenyatta"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 5,
+    "fields": {
+      "name": "Route 66",
+      "slug": "route-66",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Station-service",
+          "style": "brawl",
+          "notes": "Choke serré à la sortie. Brawl pour push.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Route ouverte",
+          "style": "poke",
+          "notes": "Section à ciel ouvert avec larges lignes de vue.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "soldier-76"],
+            "support": ["ana", "baptiste"]
+          }
+        },
+        {
+          "name": "Diner final",
+          "style": "brawl",
+          "notes": "Zone finale compact, combat rapproché inévitable.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "tracer"],
+            "support": ["kiriko", "ana"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 6,
+    "fields": {
+      "name": "Watchpoint : Gibraltar",
+      "slug": "watchpoint-gibraltar",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Piste de lancement",
+          "style": "poke",
+          "notes": "Longue piste ouverte avec couverture limitée.",
+          "recommended": {
+            "tank": ["sigma", "domina"],
+            "dps": ["sojourn", "ashe"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Hangars",
+          "style": "brawl",
+          "notes": "Couloirs entre hangars, dive possible par les flancs.",
+          "recommended": {
+            "tank": ["winston", "zarya"],
+            "dps": ["tracer", "genji"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Zone de lancement finale",
+          "style": "brawl",
+          "notes": "Zone large mais défense hauteur. Comp polyvalente.",
+          "recommended": {
+            "tank": ["zarya", "sigma"],
+            "dps": ["sojourn", "reaper"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 7,
+    "fields": {
+      "name": "Monastère de Shambali",
+      "slug": "shambali-monastery",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Entrée du monastère",
+          "style": "brawl",
+          "notes": "Choke serré à l'entrée, défense facilement tenable.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["cassidy", "soldier-76"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Jardin intérieur",
+          "style": "dive",
+          "notes": "Plusieurs niveaux verticaux, dive avantageux.",
+          "recommended": {
+            "tank": ["winston", "dva"],
+            "dps": ["genji", "tracer"],
+            "support": ["kiriko", "juno"]
+          }
+        },
+        {
+          "name": "Temple final",
+          "style": "brawl",
+          "notes": "Zone finale exiguë, brawl dominant.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 8,
+    "fields": {
+      "name": "Busan",
+      "slug": "busan",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "MEKA Base",
+          "style": "brawl",
+          "notes": "Zone de contrôle intérieure serrée. Brawl et dive fonctionnent.",
+          "recommended": {
+            "tank": ["zarya", "dva"],
+            "dps": ["tracer", "reaper"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Sanctuaire",
+          "style": "poke",
+          "notes": "Pont ouvert avec grande zone de contrôle. Poke avantageux.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Centre-ville",
+          "style": "brawl",
+          "notes": "Zone urbaine avec nombreuses hauteurs.",
+          "recommended": {
+            "tank": ["ramattra", "zarya"],
+            "dps": ["genji", "cassidy"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 9,
+    "fields": {
+      "name": "Ilios",
+      "slug": "ilios",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "Ruines",
+          "style": "brawl",
+          "notes": "Zone centrale compacte, peu de couverture. Brawl direct.",
+          "recommended": {
+            "tank": ["zarya", "reinhardt"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["lucio", "ana"]
+          }
+        },
+        {
+          "name": "Puits",
+          "style": "brawl",
+          "notes": "Zone autour du puits, knockback dangereux en bord.",
+          "recommended": {
+            "tank": ["zarya", "sigma"],
+            "dps": ["reaper", "mei"],
+            "support": ["ana", "kiriko"]
+          }
+        },
+        {
+          "name": "Phare",
+          "style": "dive",
+          "notes": "Terrasse ouverte avec hauteurs. Dive avantageux.",
+          "recommended": {
+            "tank": ["dva", "wrecking-ball"],
+            "dps": ["tracer", "genji"],
+            "support": ["kiriko", "lucio"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 10,
+    "fields": {
+      "name": "Lijiang Tower",
+      "slug": "lijiang-tower",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "Jardin de nuit",
+          "style": "dive",
+          "notes": "Jardin ouvert avec pont. Dive et poke sont efficaces.",
+          "recommended": {
+            "tank": ["dva", "winston"],
+            "dps": ["tracer", "genji", "sojourn"],
+            "support": ["kiriko", "ana"]
+          }
+        },
+        {
+          "name": "Centre de contrôle",
+          "style": "brawl",
+          "notes": "Zone fermée avec couloirs. Brawl solide.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["lucio", "ana"]
+          }
+        },
+        {
+          "name": "Galerie commerciale",
+          "style": "poke",
+          "notes": "Longues lignes de vue sur l'escalier. Poke avantageux.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 11,
+    "fields": {
+      "name": "Nepal",
+      "slug": "nepal",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "Village",
+          "style": "brawl",
+          "notes": "Zone centrale ouverte avec bord dangereux.",
+          "recommended": {
+            "tank": ["zarya", "sigma"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Sanctuaire",
+          "style": "brawl",
+          "notes": "Couloirs étroits vers la zone. Brawl dominant.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "soldier-76"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Avant-poste",
+          "style": "poke",
+          "notes": "Grand espace avec sightlines dégagées.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "ashe"],
+            "support": ["ana", "baptiste"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 12,
+    "fields": {
+      "name": "Eichenwalde",
+      "slug": "eichenwalde",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Capture du château",
+          "style": "brawl",
+          "notes": "Choke serré à l'entrée du château, défense forte.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Pont",
+          "style": "poke",
+          "notes": "Long pont ouvert, poke dominant en défense.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Salle du trône finale",
+          "style": "brawl",
+          "notes": "Zone finale très serrée, brawl incontournable.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "tracer"],
+            "support": ["kiriko", "ana"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 13,
+    "fields": {
+      "name": "King's Row",
+      "slug": "kings-row",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Point de capture",
+          "style": "brawl",
+          "notes": "Choke classique, brawl très efficace en attaque.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Tunnel",
+          "style": "brawl",
+          "notes": "Couloir unique, fight en ligne. Brawl ou dive.",
+          "recommended": {
+            "tank": ["zarya", "winston"],
+            "dps": ["tracer", "reaper"],
+            "support": ["kiriko", "ana"]
+          }
+        },
+        {
+          "name": "Zone finale souterraine",
+          "style": "brawl",
+          "notes": "Zone étroite, aucune ouverture pour poke.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["lucio", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 14,
+    "fields": {
+      "name": "Blizzard World",
+      "slug": "blizzard-world",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Capture initiale",
+          "style": "poke",
+          "notes": "Zone ouverte avec hauteurs. Poke ou brawl.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "soldier-76"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Parc d'attractions",
+          "style": "dive",
+          "notes": "Nombreuses lignes de flanc, dive très efficace.",
+          "recommended": {
+            "tank": ["dva", "wrecking-ball"],
+            "dps": ["genji", "tracer"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Zone finale",
+          "style": "brawl",
+          "notes": "Couloirs serrés vers la zone de livraison.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 15,
+    "fields": {
+      "name": "Midtown",
+      "slug": "midtown",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Capture de la gare",
+          "style": "brawl",
+          "notes": "Intérieur de gare, choke central. Brawl efficace.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "soldier-76"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Avenue",
+          "style": "poke",
+          "notes": "Rue en ligne droite avec hauteurs. Poke avantageux.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "ashe"],
+            "support": ["ana", "baptiste"]
+          }
+        },
+        {
+          "name": "Bâtiment final",
+          "style": "brawl",
+          "notes": "Zone finale dans un immeuble. Brawl ou dive.",
+          "recommended": {
+            "tank": ["zarya", "dva"],
+            "dps": ["tracer", "reaper"],
+            "support": ["kiriko", "ana"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 16,
+    "fields": {
+      "name": "Colosseo",
+      "slug": "colosseo",
+      "map_type": "push",
+      "phases": [
+        {
+          "name": "Phase de push",
+          "style": "brawl",
+          "notes": "Map push circulaire, fights constants autour du robot. Brawl dominant.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["cassidy", "soldier-76"],
+            "support": ["ana", "lucio"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 17,
+    "fields": {
+      "name": "New Queen Street",
+      "slug": "new-queen-street",
+      "map_type": "push",
+      "phases": [
+        {
+          "name": "Phase de push",
+          "style": "poke",
+          "notes": "Avenue large avec hauteurs accessibles. Poke ou dive selon le flanc.",
+          "recommended": {
+            "tank": ["sigma", "winston"],
+            "dps": ["sojourn", "tracer"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 18,
+    "fields": {
+      "name": "New Junk City",
+      "slug": "new-junk-city",
+      "map_type": "flashpoint",
+      "phases": [
+        {
+          "name": "Point A – Scrapyard",
+          "style": "brawl",
+          "notes": "Zone encombrée, couvertures partout. Brawl optimal.",
+          "recommended": {
+            "tank": ["zarya", "reinhardt"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Point B – Usine",
+          "style": "dive",
+          "notes": "Hauteurs industrielles, dive efficace pour contestation rapide.",
+          "recommended": {
+            "tank": ["dva", "winston"],
+            "dps": ["genji", "tracer"],
+            "support": ["kiriko", "juno"]
+          }
+        },
+        {
+          "name": "Point C – Central",
+          "style": "poke",
+          "notes": "Zone centrale ouverte, poke et repositionnement constants.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "anran"],
+            "support": ["ana", "zenyatta"]
+          }
+        }
+      ]
+    }
+  }
+]
