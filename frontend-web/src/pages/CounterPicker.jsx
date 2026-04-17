@@ -30,7 +30,11 @@ function SuggestionCard({ hero }) {
           )}
         </div>
 
-        <p className="text-xs text-gray-400 leading-relaxed">{hero.reason}</p>
+        <div className="flex flex-col gap-1">
+          {hero.reason.split("\n").map((line, i) => (
+            <p key={i} className="text-xs text-gray-400 leading-relaxed">{line}</p>
+          ))}
+        </div>
 
         {/* Score bar */}
         <div className="flex items-center gap-2 mt-1">
