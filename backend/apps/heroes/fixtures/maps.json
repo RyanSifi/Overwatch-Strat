@@ -696,5 +696,375 @@
         }
       ]
     }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 19,
+    "fields": {
+      "name": "Circuit Royal",
+      "slug": "circuit-royal",
+      "map_type": "escort",
+      "phases": [
+        {
+          "name": "Place du Casino",
+          "style": "poke",
+          "notes": "Large esplanade ouverte avec hauteurs côté casino. Sniper et poke dominent sur la ligne droite de départ.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["ashe", "sojourn", "widowmaker"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Rue du port",
+          "style": "brawl",
+          "notes": "Virages serrés autour du port. Combat à mi-portée, flancs par les allées latérales.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["cassidy", "soldier-76"],
+            "support": ["ana", "kiriko"]
+          }
+        },
+        {
+          "name": "Zone finale — Quai",
+          "style": "brawl",
+          "notes": "Zone finale sur le quai, espace restreint avec hauteurs défensives. Brawl incontournable.",
+          "recommended": {
+            "tank": ["zarya", "reinhardt"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["lucio", "ana"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 20,
+    "fields": {
+      "name": "Paraíso",
+      "slug": "paraiso",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Capture de la plage",
+          "style": "poke",
+          "notes": "Zone de capture ouverte en bord de mer avec hauteurs sur les bâtiments. Poke et dive sont tous deux viables.",
+          "recommended": {
+            "tank": ["sigma", "dva"],
+            "dps": ["sojourn", "tracer", "echo"],
+            "support": ["ana", "kiriko"]
+          }
+        },
+        {
+          "name": "Favela",
+          "style": "dive",
+          "notes": "Ruelles tortueuses avec nombreux niveaux verticaux. Dive très avantageux pour contester les hauteurs.",
+          "recommended": {
+            "tank": ["winston", "dva"],
+            "dps": ["genji", "tracer"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Zone finale — Club",
+          "style": "brawl",
+          "notes": "Intérieur de club avec couloirs étroits menant à la zone. Brawl dominant en défense.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 21,
+    "fields": {
+      "name": "Hollywood",
+      "slug": "hollywood",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Capture du studio",
+          "style": "brawl",
+          "notes": "Choke en sortie de spawn attaquant avec décors de studio. Reinhardt très fort sur ce choke.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "soldier-76"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Backlot",
+          "style": "poke",
+          "notes": "Section à ciel ouvert avec véhicules comme couverture. Poke efficace depuis les balcons côté défense.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "ashe"],
+            "support": ["ana", "baptiste"]
+          }
+        },
+        {
+          "name": "Zone finale — Manoir",
+          "style": "brawl",
+          "notes": "Pièce finale exiguë du manoir. Corps à corps inevitable, dive possible par l'escalier.",
+          "recommended": {
+            "tank": ["zarya", "dva"],
+            "dps": ["tracer", "reaper"],
+            "support": ["kiriko", "ana"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 22,
+    "fields": {
+      "name": "Numbani",
+      "slug": "numbani",
+      "map_type": "hybrid",
+      "phases": [
+        {
+          "name": "Capture — Terminal",
+          "style": "poke",
+          "notes": "Grand terminal aérien avec hauteurs accessibles des deux côtés. Poke dominant mais dive viable par les flancs.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Route principale",
+          "style": "brawl",
+          "notes": "Avenue large avec balcons défensifs. Combat à mi-portée autour du payload.",
+          "recommended": {
+            "tank": ["zarya", "winston"],
+            "dps": ["cassidy", "soldier-76"],
+            "support": ["ana", "kiriko"]
+          }
+        },
+        {
+          "name": "Zone finale",
+          "style": "brawl",
+          "notes": "Couloir final avec bâtiment offrant deux entrées. Zarya/Ramattra excellents pour finir.",
+          "recommended": {
+            "tank": ["zarya", "ramattra"],
+            "dps": ["reaper", "tracer"],
+            "support": ["lucio", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 23,
+    "fields": {
+      "name": "Oasis",
+      "slug": "oasis",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "Centre-ville",
+          "style": "poke",
+          "notes": "Zone circulaire avec route traversante (danger bus). Poke depuis les bâtiments environnants.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Jardins",
+          "style": "dive",
+          "notes": "Zone ouverte avec structures verticales. Dive très efficace, nombreux angles de flanc.",
+          "recommended": {
+            "tank": ["winston", "dva"],
+            "dps": ["genji", "echo"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Université",
+          "style": "brawl",
+          "notes": "Couloir d'entrée étroit puis zone centrale. Brawl solide avec possibilité de dive par les toits.",
+          "recommended": {
+            "tank": ["zarya", "dva"],
+            "dps": ["tracer", "cassidy"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 24,
+    "fields": {
+      "name": "Antarctic Peninsula",
+      "slug": "antarctic-peninsula",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "Laboratoires",
+          "style": "brawl",
+          "notes": "Intérieur de laboratoire avec couloirs et sas. Brawl et dive fonctionnent, peu de sightlines longues.",
+          "recommended": {
+            "tank": ["zarya", "reinhardt"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Rorke Inlet",
+          "style": "brawl",
+          "notes": "Zone extérieure sur la glace avec structures centrales. Brawl autour du point, attention aux bords.",
+          "recommended": {
+            "tank": ["zarya", "sigma"],
+            "dps": ["reaper", "soldier-76"],
+            "support": ["ana", "kiriko"]
+          }
+        },
+        {
+          "name": "Sous-niveaux",
+          "style": "dive",
+          "notes": "Niveau inférieur avec espaces verticaux et plateformes. Dive avantageux pour contester rapidement.",
+          "recommended": {
+            "tank": ["dva", "wrecking-ball"],
+            "dps": ["tracer", "genji"],
+            "support": ["kiriko", "juno"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 25,
+    "fields": {
+      "name": "Samoa",
+      "slug": "samoa",
+      "map_type": "control",
+      "phases": [
+        {
+          "name": "Village",
+          "style": "brawl",
+          "notes": "Village tropical dense avec nombreuses couvertures. Combat rapproché autour du point central.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Plage",
+          "style": "poke",
+          "notes": "Zone ouverte sur la plage avec hauteurs sur les falaises. Poke dominant depuis les rochers défensifs.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "ashe"],
+            "support": ["ana", "zenyatta"]
+          }
+        },
+        {
+          "name": "Chantier",
+          "style": "dive",
+          "notes": "Zone de construction avec échafaudages et niveaux multiples. Dive très efficace pour surprendre.",
+          "recommended": {
+            "tank": ["dva", "winston"],
+            "dps": ["genji", "tracer"],
+            "support": ["kiriko", "lucio"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 26,
+    "fields": {
+      "name": "Espérance",
+      "slug": "esperanca",
+      "map_type": "push",
+      "phases": [
+        {
+          "name": "Phase de push",
+          "style": "poke",
+          "notes": "Rue principale en ligne droite avec hauteurs accessibles des deux côtés. Poke avantageux pour garder le contrôle du robot.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "ashe", "soldier-76"],
+            "support": ["ana", "baptiste"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 27,
+    "fields": {
+      "name": "Runasapi",
+      "slug": "runasapi",
+      "map_type": "push",
+      "phases": [
+        {
+          "name": "Phase de push",
+          "style": "brawl",
+          "notes": "Ruines andines avec combats autour du robot dans des espaces semi-ouverts. Brawl efficace, dive possible par les flancs en pierre.",
+          "recommended": {
+            "tank": ["zarya", "winston"],
+            "dps": ["cassidy", "tracer"],
+            "support": ["ana", "kiriko"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 28,
+    "fields": {
+      "name": "Suravasa",
+      "slug": "suravasa",
+      "map_type": "flashpoint",
+      "phases": [
+        {
+          "name": "Point A — Temple",
+          "style": "brawl",
+          "notes": "Intérieur du temple avec couloirs et colonnes. Brawl dominant pour tenir et contester le point.",
+          "recommended": {
+            "tank": ["reinhardt", "zarya"],
+            "dps": ["reaper", "cassidy"],
+            "support": ["ana", "lucio"]
+          }
+        },
+        {
+          "name": "Point B — Marché",
+          "style": "dive",
+          "notes": "Marché extérieur avec toits accessibles et ruelles. Dive très efficace pour capturer rapidement.",
+          "recommended": {
+            "tank": ["dva", "winston"],
+            "dps": ["genji", "tracer"],
+            "support": ["kiriko", "lucio"]
+          }
+        },
+        {
+          "name": "Point C — Place centrale",
+          "style": "poke",
+          "notes": "Grande place ouverte avec fontaine centrale. Poke depuis les bâtiments périphériques, Sigma excellent.",
+          "recommended": {
+            "tank": ["sigma", "orisa"],
+            "dps": ["sojourn", "hanzo"],
+            "support": ["ana", "zenyatta"]
+          }
+        }
+      ]
+    }
   }
 ]
