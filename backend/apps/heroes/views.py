@@ -575,6 +575,82 @@ MATCHUP_REASONS = {
     ("vendetta", "sigma"):     "Vendetta contre Sigma car il passe ses boucliers par les flancs",
     ("vendetta", "mercy"):     "Vendetta bat Mercy car elle ne peut pas fuir un flanqueur mobile",
     ("vendetta", "lifeweaver"):"Vendetta contre Lifeweaver car il n'a aucun outil offensif pour le stopper",
+
+    # ── Domina (tank agressif, haute pression frontale) ────────────────────────
+    ("domina", "ashe"):        "Domina s'avance sur Ashe en absorbant ses tirs — force-la à reculer et à quitter sa position longue portée. Joue agressif pour couper sa ligne de mire.",
+    ("domina", "soldier-76"):  "Domina rentre au contact de Soldat:76 où ses rafales sont moins efficaces. Pousse directement sur lui — il n'a pas d'outil pour te repousser au CàC.",
+    ("domina", "hanzo"):       "Domina s'avance sur Hanzo en ligne droite — il ne peut pas charger ses flèches si tu es sur lui. Pousse tôt, force-le à se repositionner constamment.",
+    ("domina", "cassidy"):     "Domina entre au CàC avec Cassidy avant qu'il flashbang. Reste mobile et approche depuis un angle — son flashbang ne porte qu'à courte portée.",
+    ("domina", "sojourn"):     "Domina absorbe les premiers tirs de Sojourn et rush sur elle. Sa glissade est défensive — si tu es déjà sur elle elle ne peut pas s'échapper facilement.",
+    ("domina", "widowmaker"):  "Domina monte sur Widowmaker dès qu'elle se montre. Son tir chargé met du temps — si tu es sur elle avant qu'elle vise tu gagnes le duel.",
+    ("domina", "pharah"):      "Domina utilise ses projectiles longue portée pour pression Pharah dans les airs. Force-la à redescendre ou à gaspiller ses roquettes à grande distance.",
+    ("domina", "echo"):        "Domina punit Echo quand elle reste statique pour attaquer. Pousse sur elle dès qu'elle est au sol — dans les airs elle est difficile à cibler.",
+    ("domina", "reaper"):      "Domina contre Faucheur en maintenant la distance. Joue en dehors de sa portée effective — ses fusils sont inefficaces au-delà de 10m.",
+    ("domina", "sombra"):      "Domina maintient sa pression même si hackée — ses capacités de base restent opérationnelles. Reste proactive et ne laisse pas Sombra dicter le rythme.",
+    ("domina", "tracer"):      "Domina ignore Tracer et focus les cibles à haute valeur. Ses HP massifs encaissent les dégâts de Tracer — laisse tes supports la gérer.",
+    ("domina", "genji"):       "Domina punit Genji quand il dive sur ta backline. Tourne-toi vers lui dès qu'il engage — son deflect ne marche pas contre les gros projectiles.",
+    ("domina", "venture"):     "Domina place sa pression de zone là où Venture va sortir. Anticipe sa sortie de terrier et positionne-toi pour le punir dès qu'il émerge.",
+    ("domina", "anran"):       "Domina absorbe les dégâts d'Anran et force son repositionnement. Avance constamment — Anran perd son efficacité si tu es sur lui.",
+    ("domina", "junkrat"):     "Domina s'approche de Junkrat pour invalider ses grenades en arc. Au CàC ses grenades lui font autant de dégâts à lui qu'à toi.",
+
+    # ── Hazard (tank mobile, contrôle vertical) ────────────────────────────────
+    ("hazard", "hanzo"):       "Hazard monte sur les hauteurs pour flanquer Hanzo depuis son propre angle. Hazard prend les positions verticales avant lui — il ne peut pas viser en bas efficacement.",
+    ("hazard", "junkrat"):     "Hazard plonge sur Junkrat depuis les airs où ses grenades en arc ne peuvent pas te suivre. Approche-le par le dessus ou par les flancs élevés.",
+    ("hazard", "sombra"):      "Hazard reste mobile pour que Sombra ne puisse pas le hack facilement. Utilise ta mobilité verticale pour changer de niveau — Sombra suit mal les angles aériens.",
+
+    # ── Emre (DPS mobile et résilient) ────────────────────────────────────────
+    ("emre", "ashe"):          "Emre survit aux tirs d'Ashe grâce à ses capacités d'esquive. Joue en couverture, ressors pour riposter entre ses recharges — elle reload lentement.",
+    ("emre", "soldier-76"):    "Emre contre Soldat:76 en zigzaguant pour éviter ses rafales. Sa précision diminue sur les cibles mobiles — reste en mouvement constant.",
+    ("emre", "hanzo"):         "Emre esquive les flèches de Hanzo grâce à sa mobilité. Change de direction imprévisiblement — ses flèches chargées ratent les cibles rapides.",
+    ("emre", "junkrat"):       "Emre survit aux combos de Junkrat en restant mobile. Ses grenades en arc sont inefficaces contre une cible qui change constamment d'altitude.",
+    ("emre", "pharah"):        "Emre punit Pharah quand elle descend au sol. Maintiens une pression constante à mi-portée — elle doit atterrir pour recharger.",
+    ("emre", "mercy"):         "Emre chasse Mercy grâce à sa survie et mobilité. Elle ne peut pas rester en vol indéfiniment — suis-la jusqu'à l'éliminer.",
+    ("emre", "sombra"):        "Emre est difficile à one-shot même après un hack. Ses capacités passives restent actives — Sombra a du mal à l'éliminer seule sans suivi d'équipe.",
+    ("emre", "echo"):          "Emre punit Echo au sol — elle ne peut pas copier une cible qu'elle ne peut pas atteindre. Reste actif sur elle pour l'empêcher d'atterrir sereinement.",
+
+    # ── Sojourn vs Hanzo ──────────────────────────────────────────────────────
+    ("sojourn", "hanzo"):      "Sojourn bat Hanzo au duel longue portée grâce à sa glissade. Utilise la glissade pour esquiver ses flèches chargées et réponds avec un tir chargé — il ne peut pas suivre une cible mobile.",
+
+    # ── Winston vs flanqueurs ──────────────────────────────────────────────────
+    ("winston", "sombra"):     "Winston plonge sur Sombra dès qu'elle sort de furtivité. Son tesla la suit même si elle retente le hack — garde-la sous pression constante.",
+
+    # ── Kiriko vs compositions brawl ──────────────────────────────────────────
+    ("kiriko", "junkrat"):     "Kiriko téléporte ses alliés hors des zones de combo de Junkrat. Utilise Suzu pour nettoyer les dégâts en cours — son pneu survie si toute l'équipe est soignée.",
+    ("kiriko", "symmetra"):    "Kiriko téléporte ses alliés hors des rayons de Symmetra. Suzu nettoie les ralentissements — garde ta téléportation pour sortir les alliés pris dans ses tourelles.",
+    ("kiriko", "torbjorn"):    "Kiriko maintient ses alliés en vie sous le feu de la tourelle de Torbjörn. Utilise Suzu pour annuler les dégâts de Surcharge — son ulti dure 6 secondes.",
+
+    # ── Reinhardt vs Torbjörn ─────────────────────────────────────────────────
+    ("reinhardt", "torbjorn"):  "Reinhardt avance avec le bouclier pour annuler la tourelle. Une fois au contact, Torbjörn ne peut rien faire — son marteau le détruit avant qu'il réagisse.",
+
+    # ── Zenyatta vs compositions fermées ──────────────────────────────────────
+    ("zenyatta", "symmetra"):  "Zenyatta pose l'Orbe de discorde sur Symmetra — chaque allié la détruit en quelques tirs. Ses tourelles fondent si tous les alliés ont l'Orbe d'harmonie.",
+    ("zenyatta", "torbjorn"):  "Zenyatta place l'Orbe de discorde sur Torbjörn — sa tourelle détruit ses alliés mais lui fond rapidement. Cible Torbjörn lui-même, pas la tourelle.",
+    ("zenyatta", "sojourn"):   "Zenyatta pose l'Orbe de discorde sur Sojourn — son tir chargé déjà puissant devient fatal pour elle aussi. Elle ne peut pas se permettre de prendre des coups.",
+
+    # ── Baptiste vs compositions variées ──────────────────────────────────────
+    ("baptiste", "hanzo"):     "Baptiste contre Hanzo car son Champ d'immortalité annule ses one-shots — place-le avant qu'il tire et force-le à gaspiller ses flèches chargées.",
+    ("baptiste", "cassidy"):   "Baptiste bat Cassidy à mi-portée car son tir en rafale l'écrase en duel direct. Joue aggro sur lui — il n'a pas de mobilité pour fuir.",
+    ("baptiste", "widowmaker"):"Baptiste contre Widowmaker car le Champ d'immortalité force ses tirs à ne pas conclure. Elle doit viser deux fois le même joueur — ça lui coûte du temps.",
+    ("baptiste", "symmetra"):  "Baptiste bat Symmetra car sa lampe de soin tient l'équipe en vie sous ses rayons. Place le Champ d'immortalité dans les zones de tourelles pour avancer sereinement.",
+
+    # ── Ana vs compositions variées ───────────────────────────────────────────
+    ("ana", "mei"):            "Ana endort Mei au moment où elle tente de geler. La fléchette soporifique en plein souffle la coupe net — profites-en pour avancer et éliminer.",
+
+    # ── Cassidy vs compositions variées ───────────────────────────────────────
+    ("cassidy", "echo"):       "Cassidy contre Echo car la Grenade Magnétique colle même en plein vol. Attends qu'elle descende un peu puis flashbang + grenade pour l'éliminer.",
+    ("cassidy", "reaper"):     "Cassidy contre Faucheur car le flashbang l'immobilise avant qu'il approche. Garde ton flash pour le moment où il téléporte — il arrive toujours au contact.",
+
+    # ── Ashe vs compositions variées ──────────────────────────────────────────
+    ("ashe", "mercy"):         "Ashe contre Mercy car B.O.B. la force à ne plus bouger pour soigner. Envoie B.O.B. sur la Mercy — elle doit fuir et ne peut plus faire de Guardian Angel.",
+    ("ashe", "widowmaker"):    "Ashe bat Widowmaker au duel car sa cadence de tir est plus élevée. Joue en couverture, tire entre ses recharges — tu gagnes le duel d'attrition.",
+
+    # ── Anran vs compositions variées ─────────────────────────────────────────
+    ("anran", "widowmaker"):   "Anran punit Widowmaker depuis la mi-portée — sa cadence de tir la déborde avant qu'elle recharge. Reste derrière une couverture et tire entre ses rechargements.",
+
+    # ── Genji vs flanqueurs ────────────────────────────────────────────────────
+    ("genji", "sombra"):       "Genji contre Sombra car il peut deflect ses tirs quand elle sort de furtivité. Garde ton deflect pour le moment où elle hack — retourne ses dégâts sur elle.",
+    ("genji", "tracer"):       "Genji contre Tracer car son dash peut l'attraper entre ses Blinks. Joue patient — frappe dans les courtes fenêtres entre ses téléportations.",
+    ("genji", "reaper"):       "Genji contre Faucheur en le harcelant à mi-portée avec ses shurikens. Reste hors de sa portée effective (moins de 10m) — deflect ses tirs si il tente de s'approcher.",
 }
 
 # Fallback basé sur le subrole quand aucun matchup spécifique n'existe
