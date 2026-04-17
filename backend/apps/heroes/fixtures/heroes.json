@@ -11,7 +11,8 @@
       "styles": ["dive", "brawl"],
       "counters": {
         "junkrat": 10, "bastion": 15, "pharah": 12, "torbjorn": 10, "symmetra": 8,
-        "zarya": -12, "roadhog": -8, "ana": -5, "cassidy": -8, "soldier-76": -5
+        "sojourn": 10, "sigma": 6,
+        "zarya": -12, "roadhog": -8, "cassidy": -8, "soldier-76": -5
       },
       "is_new": false,
       "icon_url": ""
@@ -191,8 +192,9 @@
       "tier": "A",
       "styles": ["dive"],
       "counters": {
-        "tracer": 10, "genji": 10, "zenyatta": 15, "widowmaker": 12, "ana": 5,
-        "ana": -8, "cassidy": -10, "roadhog": -5, "zarya": -10, "reaper": -15
+        "tracer": 10, "genji": 10, "zenyatta": 15, "widowmaker": 12,
+        "sojourn": 8, "ana": 8,
+        "cassidy": -10, "roadhog": -5, "zarya": -10, "reaper": -15
       },
       "is_new": false,
       "icon_url": ""
@@ -209,8 +211,8 @@
       "tier": "A",
       "styles": ["dive"],
       "counters": {
-        "tracer": 8, "zenyatta": 12, "widowmaker": 10, "ana": 5,
-        "sombra": -15, "cassidy": -10, "ana": -8, "bastion": -8
+        "tracer": 8, "zenyatta": 12, "widowmaker": 10, "ana": 8, "sojourn": 6,
+        "sombra": -15, "cassidy": -10, "bastion": -8
       },
       "is_new": false,
       "icon_url": ""

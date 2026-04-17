@@ -18,6 +18,9 @@ environ.Env.read_env(BASE_DIR / ".env")
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+# Autorise testserver en développement (utilisé par les tests Django)
+if DEBUG:
+    ALLOWED_HOSTS += ["testserver"]
 
 # ─── Applications ───────────────────────────────────────────────────────────
 INSTALLED_APPS = [
