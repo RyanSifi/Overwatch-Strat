@@ -144,8 +144,10 @@ def map_guide(request, slug):
                     heroes_data.append({
                         "slug":     h.slug,
                         "name":     h.name,
+                        "role":     h.role,
                         "tier":     h.tier,
                         "subrole":  h.subrole,
+                        "is_new":   h.is_new,
                         "icon_url": h.icon_url,
                     })
                 except Hero.DoesNotExist:
