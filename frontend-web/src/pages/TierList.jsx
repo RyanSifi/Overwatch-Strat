@@ -125,28 +125,44 @@ function HeroDetailPanel({ hero, onClose }) {
           <span className="text-gray-500 text-xs uppercase tracking-wider">Tier</span>
           <TierBadge tier={hero.tier} size="lg" />
         </div>
-
         {hero.subrole && (
           <div className="flex flex-col gap-1">
             <span className="text-gray-500 text-xs uppercase tracking-wider">Sous-rôle</span>
-            <span className="badge text-gray-300 capitalize">{hero.subrole}</span>
+            <span className="text-xs text-gray-300 capitalize bg-ow-border/60 border border-ow-border px-2.5 py-1 rounded-lg">{hero.subrole}</span>
+          </div>
+        )}
+        {hero.styles && hero.styles.length > 0 && (
+          <div className="flex flex-col gap-1">
+            <span className="text-gray-500 text-xs uppercase tracking-wider">Style</span>
+            <div className="flex gap-1 flex-wrap">
+              {hero.styles.map((s) => (
+                <span key={s} className="text-xs text-ow-accent capitalize bg-ow-accent/10 border border-ow-accent/30 px-2 py-0.5 rounded-full">{s}</span>
+              ))}
+            </div>
           </div>
         )}
       </div>
 
-      {/* Play styles */}
-      {hero.styles && hero.styles.length > 0 && (
-        <div className="flex flex-col gap-1.5">
-          <span className="text-gray-500 text-xs uppercase tracking-wider">Styles de jeu</span>
-          <div className="flex flex-wrap gap-2">
-            {hero.styles.map((style) => (
-              <span
-                key={style}
-                className="badge bg-ow-border/60 text-gray-300 capitalize px-2.5 py-1 rounded-lg text-xs font-medium border border-ow-border"
-              >
-                {style}
-              </span>
-            ))}
+      {/* Traits ++/+/-/-- */}
+      {hero.traits && hero.traits.length > 0 && (
+        <div className="flex flex-col gap-2">
+          <span className="text-gray-500 text-xs uppercase tracking-wider">Points forts & faibles</span>
+          <div className="flex flex-col gap-1.5">
+            {hero.traits.map((trait, i) => {
+              const cfg = {
+                "++": { dot: "bg-green-400",  text: "text-green-400",  label: "++" },
+                "+":  { dot: "bg-green-600",  text: "text-green-500",  label: "+"  },
+                "-":  { dot: "bg-red-600",    text: "text-red-500",    label: "-"  },
+                "--": { dot: "bg-red-400",    text: "text-red-400",    label: "--" },
+              }[trait.rating] ?? { dot: "bg-gray-500", text: "text-gray-400", label: "?" };
+              return (
+                <div key={i} className="flex items-start gap-2">
+                  <span className={`shrink-0 mt-1 w-2 h-2 rounded-full ${cfg.dot}`} />
+                  <span className={`text-xs font-bold w-5 shrink-0 ${cfg.text}`}>{cfg.label}</span>
+                  <span className="text-xs text-gray-300 leading-relaxed">{trait.label}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

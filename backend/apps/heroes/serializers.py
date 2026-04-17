@@ -18,7 +18,7 @@ class HeroListSerializer(serializers.ModelSerializer):
     """Version allégée pour les listes (sans counters)."""
     class Meta:
         model = Hero
-        fields = ["id", "name", "slug", "role", "subrole", "tier", "styles", "is_new", "icon_url"]
+        fields = ["id", "name", "slug", "role", "subrole", "tier", "styles", "traits", "is_new", "icon_url"]
 
 
 class MapSerializer(serializers.ModelSerializer):

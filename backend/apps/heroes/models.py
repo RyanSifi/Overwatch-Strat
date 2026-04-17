@@ -55,6 +55,8 @@ class Hero(models.Model):
     styles = models.JSONField(default=list, verbose_name="Styles de jeu")
     # Dict slug→score : score positif = ce héros counter l'ennemi
     counters = models.JSONField(default=dict, verbose_name="Counters")
+    # Points forts/faibles : liste de { "label": str, "rating": "++" | "+" | "-" | "--" }
+    traits = models.JSONField(default=list, verbose_name="Traits")
     # Héros introduits en saison 1 2026 (Domina, Hazard, Anran, Mizuki, Fika)
     is_new = models.BooleanField(default=False, verbose_name="Nouveau héros")
     icon_url = models.URLField(blank=True, verbose_name="URL icône")
