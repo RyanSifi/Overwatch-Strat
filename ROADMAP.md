@@ -18,8 +18,8 @@
 
 ### Frontend web
 - [x] **Étape 4** — Setup Vite + Tailwind + Zustand + React Router
-- [ ] **Étape 5** — Composants de base (`HeroCard`, `HeroPicker`, `RoleFilter`, `TierBadge`, `MapSelector`)
-- [ ] **Étape 6** — Page `CounterPicker` (comp ennemie → suggestions par rôle)
+- [x] **Étape 5** — Composants de base (`HeroCard`, `HeroPicker`, `RoleFilter`, `TierBadge`, `MapSelector`)
+- [x] **Étape 6** — Page `CounterPicker` (comp ennemie → suggestions par rôle)
 - [ ] **Étape 7** — Page `Guide` (map + phase → picks recommandés)
 - [ ] **Étape 8** — Page `TierList` (filtrable rôle / style / map)
 - [ ] **Étape 9** — Page `Tracker` + graphiques Recharts

@@ -25,6 +25,7 @@ class HeroListView(generics.ListAPIView):
     """
     permission_classes = [AllowAny]
     serializer_class   = HeroListSerializer
+    pagination_class   = None  # Retourne tous les héros sans pagination
 
     def get_queryset(self):
         qs = Hero.objects.all()
@@ -108,6 +109,7 @@ class MapListView(generics.ListAPIView):
     """
     permission_classes = [AllowAny]
     serializer_class   = MapSerializer
+    pagination_class   = None  # Retourne toutes les maps sans pagination
 
     def get_queryset(self):
         qs       = Map.objects.all()
@@ -164,6 +166,150 @@ def map_guide(request, slug):
 
 
 # ─── Counter-picker ───────────────────────────────────────────────────────────
+
+# Explications spécifiques par matchup (hero_slug, enemy_slug)
+MATCHUP_REASONS = {
+    # D.Va
+    ("dva", "bastion"):      "La Défense Matricielle absorbe entièrement le feu de Bastion",
+    ("dva", "pharah"):       "Les missiles et la Matrice dominent Pharah dans les airs",
+    ("dva", "junkrat"):      "La Matrice détruit les grenades et les pneus de Junkrat",
+    ("dva", "torbjorn"):     "La Matrice détruit la tourelle de Torbjörn facilement",
+    ("dva", "symmetra"):     "La Matrice absorbe les rayons et détruit les tourelles",
+    ("dva", "sojourn"):      "La Matrice bloque les tirs chargés de Sojourn",
+    ("dva", "hanzo"):        "La Matrice détruit les flèches et les dragons",
+    ("dva", "ashe"):         "Plonge sur Ashe et absorbe ses tirs avec la Matrice",
+    # Winston
+    ("winston", "widowmaker"): "Saut direct sur Widowmaker, elle ne peut pas fuir",
+    ("winston", "tracer"):     "Le tesla suit Tracer même en déplacement rapide",
+    ("winston", "genji"):      "Le tesla inflige des dégâts continus, contrant la mobilité de Genji",
+    ("winston", "sojourn"):    "Dive sur Sojourn avant qu'elle charge ses tirs",
+    ("winston", "hanzo"):      "Saut sur Hanzo avant qu'il repositionne",
+    ("winston", "ashe"):       "Dive sur Ashe et perturbe son positionnement",
+    # Zarya
+    ("zarya", "mei"):          "La bulle protège les alliés du freeze et brise les Cryo-Congels",
+    ("zarya", "cassidy"):      "La bulle annule la Grenade Magnétique de Cassidy",
+    ("zarya", "genji"):        "La bulle annule le deflect et les shurikens",
+    ("zarya", "tracer"):       "La bulle sauve les alliés piégés par les Pulse Bomb",
+    ("zarya", "reaper"):       "La bulle réduit les dégâts de Faucheur au corps à corps",
+    # Sigma
+    ("sigma", "pharah"):       "Le bouclier bloque les roquettes, l'accrétion neutralise Pharah",
+    ("sigma", "bastion"):      "Le bouclier absorbe le feu de Bastion, Sigma contre à distance",
+    ("sigma", "ashe"):         "Le bouclier bloque les tirs longue portée d'Ashe",
+    ("sigma", "hanzo"):        "Le bouclier bloque les flèches et les dragons de Hanzo",
+    ("sigma", "soldier-76"):   "Le bouclier bloque les rafales de Soldat : 76",
+    ("sigma", "echo"):         "L'accrétion interrompt Echo en vol",
+    ("sigma", "widowmaker"):   "Le bouclier force Widowmaker à changer de position",
+    # Reinhardt
+    ("reinhardt", "bastion"):  "Le Bouclier de Barrière absorbe le feu de Bastion",
+    ("reinhardt", "ashe"):     "Le bouclier bloque entièrement les tirs longs d'Ashe",
+    ("reinhardt", "soldier-76"): "Le bouclier contient Soldat : 76 à distance",
+    ("reinhardt", "cassidy"):  "Le bouclier bloque les tirs et force Cassidy au corps à corps",
+    ("reinhardt", "junkrat"):  "Le bouclier absorbe les grenades et le pneu de Junkrat",
+    ("reinhardt", "mei"):      "Le bouclier empêche Mei de geler l'équipe à distance",
+    # Orisa
+    ("orisa", "mei"):          "Fortifier annule le gel de Mei, Orisa n'est pas ralentie",
+    ("orisa", "cassidy"):      "Fortifier réduit massivement les dégâts de Cassidy",
+    ("orisa", "soldier-76"):   "La javeline interrompt le Sprint tactique de Soldat : 76",
+    ("orisa", "ashe"):         "La lance de Orisa repousse Ashe et son cheval Bob",
+    # Hazard
+    ("hazard", "venture"):     "Hazard est très mobile, réplique à la mobilité de Venture",
+    ("hazard", "reaper"):      "Les piques tiennent Faucheur à distance",
+    ("hazard", "cassidy"):     "La mobilité de Hazard évite les flashbangs de Cassidy",
+    ("hazard", "soldier-76"):  "Hazard prend les angles pour éviter les tirs de Soldat : 76",
+    # Ramattra
+    ("ramattra", "mei"):       "La forme Nemesis résiste au freeze, Ramattra s'approche sans crainte",
+    ("ramattra", "cassidy"):   "La forme Nemesis absorbe les dégâts de Cassidy",
+    ("ramattra", "reaper"):    "La forme Nemesis réduit les dégâts au corps à corps de Faucheur",
+    ("ramattra", "venture"):   "L'anneau de blocage neutralise la sortie de terre de Venture",
+    # Ana
+    ("ana", "sojourn"):        "Fléchette soporifique empêche Sojourn de charger sa Glissade",
+    ("ana", "widowmaker"):     "La fléchette endort Widowmaker avant qu'elle vise",
+    ("ana", "bastion"):        "Le tir anti-soin annule les soins pendant la forme Tank de Bastion",
+    ("ana", "ashe"):           "La grenade anti-soin empêche Ashe de récupérer après un duel",
+    ("ana", "soldier-76"):     "La grenade et le tir anti-soin contrent le Biotic Field",
+    ("ana", "hanzo"):          "La fléchette soporifique interrompt la concentration de Hanzo",
+    ("ana", "venture"):        "La fléchette endort Venture à la sortie de son terrier",
+    ("ana", "junkrat"):        "Tir anti-soin sur le Junkrat empêche toute récupération",
+    # Baptiste
+    ("baptiste", "bastion"):   "Champ d'immortalité permet à l'équipe de survivre à la rafale de Bastion",
+    ("baptiste", "sojourn"):   "Le Champ d'immortalité contrecarre les one-shots de Sojourn",
+    ("baptiste", "torbjorn"):  "La lampe détruit facilement la tourelle de Torbjörn",
+    ("baptiste", "soldier-76"):"Le tir en rafale de Baptiste domine à mi-portée face à Soldat",
+    ("baptiste", "ashe"):      "Le Champ d'immortalité annule les picks d'Ashe",
+    ("baptiste", "junkrat"):   "Le Champ d'immortalité absorbe les combos de Junkrat",
+    # Kiriko
+    ("kiriko", "mei"):         "Suzu nettoie instantanément le gel de Mei sur tes alliés",
+    ("kiriko", "sombra"):      "Suzu supprime le hack de Sombra",
+    ("kiriko", "cassidy"):     "Suzu supprime la Grenade Magnétique de Cassidy",
+    ("kiriko", "soldier-76"):  "La téléportation de Kiriko permet d'esquiver les ulti",
+    ("kiriko", "sojourn"):     "Suzu peut cleanse les effets de ralentissement de Sojourn",
+    ("kiriko", "venture"):     "Suzu nettoie les effets de Venture à la sortie du sol",
+    ("kiriko", "widowmaker"):  "Suzu protège les alliés visés par Widowmaker",
+    # Zenyatta
+    ("zenyatta", "bastion"):   "L'Orbe de discorde multiplie les dégâts sur Bastion",
+    ("zenyatta", "widowmaker"):"L'Orbe de discorde force Widowmaker à se repositionner",
+    ("zenyatta", "cassidy"):   "L'Orbe de discorde compense l'armure lourde de Cassidy",
+    ("zenyatta", "ashe"):      "L'Orbe de discorde rend Ashe vulnérable malgré sa portée",
+    ("zenyatta", "hanzo"):     "L'Orbe de discorde sur Hanzo amplifie tous les tirs",
+    ("zenyatta", "soldier-76"):"L'Orbe de discorde annihile rapidement Soldat : 76",
+    ("zenyatta", "junkrat"):   "Transcendance survit aux combos de Junkrat",
+    # Brigitte
+    ("brigitte", "tracer"):    "Coup de bouclier et fouet interrompent les Blink de Tracer",
+    ("brigitte", "genji"):     "Coup de bouclier interrompt les déflexions de Genji",
+    ("brigitte", "reaper"):    "L'armure de pack de soin réduit les dégâts de Faucheur",
+    ("brigitte", "mei"):       "Les packs d'armure protègent l'équipe du gel de Mei",
+    ("brigitte", "venture"):   "Coup de bouclier interrompt Venture à la sortie de terre",
+    ("brigitte", "sombra"):    "La résistance empêche Sombra de te one-shot facilement",
+    # Lucio
+    ("lucio", "widowmaker"):   "Vitesse de groupe permet d'éviter les lignes de mire",
+    ("lucio", "symmetra"):     "La vitesse annule les turelles de Symmetra rapidement",
+    ("lucio", "torbjorn"):     "Le boost de vitesse permet de rush et détruire la tourelle",
+    ("lucio", "pharah"):       "Le Boop envoie Pharah hors position",
+    ("lucio", "bastion"):      "Le boost de vitesse permet d'approcher Bastion en sécurité",
+    # Moira
+    ("moira", "reaper"):       "Fade annule les téléportations de Faucheur et esquive ses dégâts",
+    ("moira", "venture"):      "Fade passe à travers les attaques de Venture",
+    ("moira", "mei"):          "Fade nettoie les effets de gel de Mei",
+    ("moira", "tracer"):       "La sphère de dégâts suit Tracer partout",
+    # Mercy
+    ("mercy", "pharah"):       "Amplification des dégâts sur un DPS détruit Pharah depuis le sol",
+    ("mercy", "widowmaker"):   "Boost de dégâts + résurrection contrent les picks de Widowmaker",
+    ("mercy", "echo"):         "Res d'Echo empêche l'ennemi de prendre l'avantage avec la copie",
+}
+
+# Descriptions basées sur le subrole pour les matchups sans raison spécifique
+SUBROLE_INTROS = {
+    "initiator":  "Initie les combats pour forcer des positions défavorables à l'ennemi",
+    "anchor":     "Anchor tank solide — tient le terrain et protège l'équipe",
+    "brawler":    "Combat au corps à corps, écrase les ennemis rapprochés",
+    "disruptor":  "Perturbe la composition ennemie et gêne leurs rotations",
+    "flanker":    "Flanque la backline ennemie et élimine les cibles isolées",
+    "sniper":     "Domine à longue portée et contre les héros fixes",
+    "area":       "Contrôle les zones et force les ennemis à se disperser",
+    "hybrid":     "Polyvalent — s'adapte à plusieurs types de compositions",
+    "healer":     "Maintient l'équipe en vie face aux dégâts continus",
+    "aggressive": "Soigne tout en harcelant les ennemis en backline",
+    "utility":    "Apporte des utilitaires décisifs (cleanse, boost, ulti counter)",
+    "survivor":   "Très difficile à éliminer, force l'ennemi à sur-investir",
+}
+
+def build_reason(hero, covered_enemies, enemy_name_map, total_score):
+    """Génère une explication détaillée pour un counter suggéré."""
+    specific_reasons = []
+    for enemy_slug in covered_enemies:
+        key = (hero.slug, enemy_slug)
+        if key in MATCHUP_REASONS:
+            specific_reasons.append(MATCHUP_REASONS[key])
+
+    if specific_reasons:
+        return " • ".join(specific_reasons)
+
+    # Fallback : explication basée sur le subrole + ennemis couverts
+    names = [enemy_name_map.get(s, s) for s in covered_enemies]
+    intro = SUBROLE_INTROS.get(hero.subrole, "Bon pick dans cette composition")
+    if names:
+        return f"{intro}. Efficace contre {', '.join(names)}."
+    return intro
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
@@ -223,6 +369,14 @@ def suggest_counters(request):
     # Trie par score décroissant et regroupe par rôle
     sorted_heroes = sorted(score_map.values(), key=lambda x: x["total_score"], reverse=True)
 
+    # Pré-charge les noms ennemis pour les explications
+    enemy_name_map = {}
+    for slug in valid_enemy_slugs:
+        try:
+            enemy_name_map[slug] = Hero.objects.get(slug=slug).name
+        except Hero.DoesNotExist:
+            enemy_name_map[slug] = slug
+
     result = {"tank": [], "dps": [], "support": []}
 
     for entry in sorted_heroes:
@@ -233,17 +387,7 @@ def suggest_counters(request):
         if len(result[role]) >= 3:
             continue
 
-        # Génère une explication lisible
-        if entry["covered_enemies"]:
-            covered_names = []
-            for s in entry["covered_enemies"]:
-                try:
-                    covered_names.append(Hero.objects.get(slug=s).name)
-                except Hero.DoesNotExist:
-                    covered_names.append(s)
-            reason = f"Bon contre {', '.join(covered_names)} (score {entry['total_score']})"
-        else:
-            reason = "Polyvalent dans cette composition"
+        reason = build_reason(hero, entry["covered_enemies"], enemy_name_map, entry["total_score"])
 
         result[role].append({
             "slug":            hero.slug,
