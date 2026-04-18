@@ -15,8 +15,7 @@ urlpatterns = [
     path("meta/", views.MetaCompListView.as_view(), name="meta-list"),
 
     # Patch Notes
-    path("patches/",            views.PatchNoteListView.as_view(),   name="patch-list"),
-    path("patches/<str:version>/", views.PatchNoteDetailView.as_view(), name="patch-detail"),
+    path("patches/latest/", views.latest_patch, name="patch-latest"),
 
     # Maps
     path("maps/",                    views.MapListView.as_view(),   name="map-list"),

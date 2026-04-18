@@ -18,5 +18,4 @@ export const getHeroSynergies = (slug) =>
 export const getMetaComps = (params = {}) =>
   client.get("/meta/", { params }).then((r) => r.data);
 
-export const getPatchNotes  = ()        => client.get("/patches/").then((r) => r.data);
-export const getPatchDetail = (version) => client.get(`/patches/${version}/`).then((r) => r.data);
+export const getLatestPatch = () => client.get("/patches/latest/").then((r) => r.data);

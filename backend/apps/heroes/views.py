@@ -102,20 +102,17 @@ def hero_counters(request, slug):
 
 # ─── Patch Notes ─────────────────────────────────────────────────────────────
 
-class PatchNoteListView(generics.ListAPIView):
-    """GET /api/patches/  — liste tous les patches, triés par date décroissante."""
-    permission_classes = [AllowAny]
-    serializer_class   = PatchNoteSerializer
-    pagination_class   = None
-    queryset           = PatchNote.objects.all()
-
-
-class PatchNoteDetailView(generics.RetrieveAPIView):
-    """GET /api/patches/<version>/"""
-    permission_classes = [AllowAny]
-    serializer_class   = PatchNoteSerializer
-    queryset           = PatchNote.objects.all()
-    lookup_field       = "version"
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def latest_patch(request):
+    """GET /api/patches/latest/ — retourne uniquement le patch actuel (is_latest=True)."""
+    try:
+        patch = PatchNote.objects.get(is_latest=True)
+    except PatchNote.DoesNotExist:
+        patch = PatchNote.objects.first()
+    if not patch:
+        return Response({"error": "Aucun patch disponible."}, status=status.HTTP_404_NOT_FOUND)
+    return Response(PatchNoteSerializer(patch).data)
 
 
 # ─── Méta ────────────────────────────────────────────────────────────────────
