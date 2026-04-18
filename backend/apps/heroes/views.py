@@ -167,6 +167,341 @@ def map_guide(request, slug):
     })
 
 
+# ─── Synergies ───────────────────────────────────────────────────────────────
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def hero_synergies(request, slug):
+    """
+    GET /api/heroes/<slug>/synergies/
+    Retourne les synergies d'un héros : alliés avec qui il est fort,
+    triés par score décroissant, avec une explication textuelle.
+    """
+    try:
+        hero = Hero.objects.get(slug=slug)
+    except Hero.DoesNotExist:
+        return Response({"error": f"Héros '{slug}' introuvable."}, status=status.HTTP_404_NOT_FOUND)
+
+    result = []
+    for ally_slug, score in sorted(hero.synergies.items(), key=lambda x: -x[1]):
+        try:
+            ally = Hero.objects.get(slug=ally_slug)
+            reason_key = (slug, ally_slug)
+            result.append({
+                "slug":     ally.slug,
+                "name":     ally.name,
+                "role":     ally.role,
+                "subrole":  ally.subrole,
+                "tier":     ally.tier,
+                "icon_url": ally.icon_url,
+                "score":    score,
+                "reason":   SYNERGY_REASONS.get(reason_key, ""),
+            })
+        except Hero.DoesNotExist:
+            continue
+
+    return Response({
+        "hero":       HeroSerializer(hero).data,
+        "synergies":  result,
+    })
+
+
+# Explications de synergies : (hero_slug, ally_slug) → raison
+SYNERGY_REASONS = {
+    # ── Ana ───────────────────────────────────────────────────────────────────
+    ("ana", "genji"):       "Nano Blade : le Kiai boosté détruit plusieurs ennemis instantanément — la synergie la plus connue du jeu.",
+    ("ana", "reinhardt"):   "Nano Earthshatter : Reinhardt chargé au Biostimulant + Smash de terrain = teamwipe quasi garanti.",
+    ("ana", "reaper"):      "Nano Death Blossom : Faucheur devient invincible en tournant — élimine 4-5 héros si positionné au cœur du groupe.",
+    ("ana", "soldier-76"):  "Nano Visor : le tracking de Soldat augmenté par le Biostimulant garantit les éliminations multiples.",
+    ("ana", "winston"):     "Nano Primal Rage : Winston chargé saute partout et tue à coups de poing — impossible à gérer pour la backline.",
+    ("ana", "roadhog"):     "Sleep Dart après le Hook : l'ennemi accroché + endormi avant le tir = mort assurée, sans échappatoire.",
+    ("ana", "junker-queen"):"Grenade biotique + Rampage : JQ soignée massivement + Rampage applique Anti-Heal en zone = duo mortel.",
+    ("ana", "dva"):         "Nano D.Va en mode boost : sa manoeuvrabilité + dégâts augmentés rend chaque Missile Micro dévastateur.",
+
+    # ── Genji ─────────────────────────────────────────────────────────────────
+    ("genji", "ana"):       "Nano Blade : voir Ana — la synergie la plus iconique d'Overwatch, teamwipe garanti si bien exécuté.",
+    ("genji", "zenyatta"):  "Orbe de Discorde + 2 swings de Katana = élimination en moins de 2 secondes sur n'importe quel DPS.",
+    ("genji", "kiriko"):    "Suzu annule les CC pendant le Blade, Swift Step permet à Kiriko d'être toujours aux côtés de Genji.",
+    ("genji", "lucio"):     "Speed boost + dash Genji = flanqueur irrattrapable, impossible à anticiper ou à contrer.",
+    ("genji", "mercy"):     "Mercy pocket pendant le Blade : les dégâts boostés sur plusieurs cibles garantissent le teamwipe.",
+
+    # ── Lucio ─────────────────────────────────────────────────────────────────
+    ("lucio", "reinhardt"):  "Rush combo : Speed Boost + Earthshatter = engagement ultra rapide inévitable sur toute la frontline.",
+    ("lucio", "winston"):    "Dive accélérée : Winston saute + Lucio speed = les deux arrivent simultanément sur la backline.",
+    ("lucio", "dva"):        "Double dive mobile : D.Va + Lucio s'engagent en simultané depuis deux angles différents.",
+    ("lucio", "junker-queen"):"Rush brawl : JQ court déjà vite, le Speed Boost la rend impossible à fuir.",
+    ("lucio", "genji"):      "Flanc irrattrapable : Genji + speed boost = aucun support ne peut l'esquiver.",
+    ("lucio", "tracer"):     "Tracer encore plus mobile avec le Speed Boost — son Clin d'œil devient une arme de repositionnement absurde.",
+    ("lucio", "mauga"):      "Speed Mauga : un Mauga en charge accélérée est impossible à fuir ou à CC efficacement.",
+    ("lucio", "wrecking-ball"):"Ball + Speed = le Balling de Wrecking Ball génère encore plus de chaos.",
+
+    # ── Mercy ─────────────────────────────────────────────────────────────────
+    ("mercy", "pharah"):    "Pharmercy : vol permanent + Amplification de dégâts = combo incontestable si pas de hitscan.",
+    ("mercy", "echo"):      "Rayon focalisé boosté : les dégâts d'Echo en phase de charge avec le boost sont dévastateurs.",
+    ("mercy", "bastion"):   "Bastion Config Artillerie boosté : DPS maximal sur la cible depuis une position fixe sécurisée.",
+    ("mercy", "soldier-76"):"Damage boost + Biostimulant = Soldat devient un DPS hypercarry en pocket.",
+    ("mercy", "reinhardt"): "Résurrection de Reinhardt : ramener le tank en plein fight retourne complètement la situation.",
+
+    # ── Reinhardt ─────────────────────────────────────────────────────────────
+    ("reinhardt", "lucio"):  "Rush : Speed Boost + Earthshatter = la combinaison de brawl la plus efficace du jeu.",
+    ("reinhardt", "zarya"):  "Graviton + Earthshatter : les ennemis aspirés par la Grav sont stun au sol = teamwipe total.",
+    ("reinhardt", "ana"):    "Nano Earthshatter : Rein chargé + stun sol = aucune équipe ne survit à ça bien exécuté.",
+    ("reinhardt", "brigitte"):"Brawl infranchissable : Brig soigne au hit derrière le bouclier, le duo push est imparable.",
+    ("reinhardt", "zenyatta"):"Discord Orb + Rein swing : la cible discordée meurt en 2 swings de marteau.",
+    ("reinhardt", "moira"):  "Moira soigne Rein en push constant — le bouclier + soin continu = front impénétrable.",
+    ("reinhardt", "junkrat"):"Bouclier cache Junkrat qui spam ses grenades derrière — défense et pression combo parfaite.",
+
+    # ── Zarya ─────────────────────────────────────────────────────────────────
+    ("zarya", "hanzo"):     "Combo Grav Dragon : Graviton + Dragon Strike = teamwipe en 2 secondes — classique du méta OW.",
+    ("zarya", "pharah"):    "Graviton + Barrage : les ennemis dans la Grav ne peuvent pas éviter les roquettes de Pharah.",
+    ("zarya", "cassidy"):   "Graviton + Cowboy Deadeye : cibles immobiles dans la Grav = Deadeye garantit les OS.",
+    ("zarya", "reinhardt"): "Double CC : Graviton regroupe + Earthshatter stun = toute l'équipe ennemie au sol.",
+    ("zarya", "reaper"):    "Graviton + Death Blossom : Faucheur au cœur d'un groupe immobile = teamwipe instantané.",
+    ("zarya", "lucio"):     "Son Mur de son dans la Grav force les ennemis à prendre les dégâts sans fuir.",
+    ("zarya", "mei"):       "Mur de glace + Graviton : Mei sépare l'équipe, Zarya aspire les fragments isolés.",
+
+    # ── Winston ───────────────────────────────────────────────────────────────
+    ("winston", "tracer"):  "Dive coordonnée : Winston crée le chaos en frontline, Tracer élimine les supports isolés.",
+    ("winston", "lucio"):   "Dive accélérée : Speed boost permet à Winston d'arriver en 0,5 seconde sur la backline.",
+    ("winston", "dva"):     "Double tank dive : deux tanks mobiles submergent simultanément toute la backline.",
+    ("winston", "genji"):   "Triple dive : Winston + Genji = supports débordés de partout, impossible de tout gérer.",
+    ("winston", "kiriko"):  "Kiriko Swift Step sur Winston en frontline = heal instantané sur la cible la plus exposée.",
+    ("winston", "sombra"):  "Sombra Hack + Winston jump = cible isolée sans capacités face à un tank agressif.",
+
+    # ── D.Va ──────────────────────────────────────────────────────────────────
+    ("dva", "lucio"):       "Speed boost D.Va = engagement ultra rapide, sa mobilité + vitesse = impossible à contrer.",
+    ("dva", "winston"):     "Double dive : deux tanks convergent sur la backline depuis des angles différents.",
+    ("dva", "tracer"):      "Dive + distraction : D.Va passe en force, Tracer finit les cibles affaiblies.",
+    ("dva", "ana"):         "Nano D.Va boostée : son explosion de missiles fait des dégâts massifs en zone.",
+
+    # ── Zenyatta ──────────────────────────────────────────────────────────────
+    ("zenyatta", "genji"):      "Orbe de Discorde + 2 swings : n'importe quel DPS meurt en moins de 2 secondes.",
+    ("zenyatta", "widowmaker"): "Discord Orb = Widowmaker OS en un seul tir chargé même sur les tanks.",
+    ("zenyatta", "tracer"):     "Discord + burst Tracer = DPS combiné qui ignore les gros HP.",
+    ("zenyatta", "reaper"):     "Discord + Death Blossom : Faucheur fait encore plus de dégâts sur une cible discordée.",
+    ("zenyatta", "sojourn"):    "Discord + Railgun chargé : OS garanti sur n'importe qui, même avec gros HP.",
+
+    # ── Kiriko ────────────────────────────────────────────────────────────────
+    ("kiriko", "genji"):    "Suzu annule les CC pendant le Blade — Genji continue même sous AoE, Kiriko suit en Swift Step.",
+    ("kiriko", "tracer"):   "Suzu sauve Tracer des CC létaux (Sleep, Flash, Crochet) qui l'auraient OS.",
+    ("kiriko", "winston"):  "Swift Step sur Winston en frontline = heal instantané au bon endroit au bon moment.",
+    ("kiriko", "lucio"):    "Double mobilité : Kiriko + Lucio = les deux supports les plus réactifs du jeu ensemble.",
+    ("kiriko", "reaper"):   "Suzu annule les ralentissements et CC qui bloqueraient Faucheur en flanc.",
+
+    # ── Brigitte ──────────────────────────────────────────────────────────────
+    ("brigitte", "reinhardt"):  "Inspire soigne Rein au hit — le duo de brawl le plus résistant, le shield + heal = duo imprenable.",
+    ("brigitte", "zarya"):      "Brawl : Bouclier de Zarya + Armor Packs Brig = combo survie au corps à corps.",
+    ("brigitte", "lucio"):      "LúcioRio : Speed boost + Armor Packs = la meilleure composition de brawl du jeu.",
+    ("brigitte", "junker-queen"):"JQ Rampage + Inspire = JQ inarrêtable avec soins constants en brawl.",
+    ("brigitte", "mauga"):      "Inspire soigne Mauga en continu dans la mêlée — il ne meurt tout simplement pas.",
+
+    # ── Orisa ─────────────────────────────────────────────────────────────────
+    ("orisa", "bastion"):   "Javelin Spin + Bastion Config Artillerie : zone de contrôle absolute, personne ne passe.",
+    ("orisa", "reaper"):    "Attraction de lance + Death Blossom : ennemis aspirés au cœur de la zone = wipe.",
+    ("orisa", "hanzo"):     "Javelin Spin immobilise = Hanzo prend le temps de viser sans pression.",
+    ("orisa", "cassidy"):   "Javelin Throw + Grenade Flash = double CC = mort garantie sur toute cible.",
+    ("orisa", "junkrat"):   "Bouclier Orisa protège Junkrat qui spam ses grenades derrière en sécurité.",
+
+    # ── Sigma ─────────────────────────────────────────────────────────────────
+    ("sigma", "sojourn"):   "Flux de gravité immobilise = tir chargé Sojourn garanti sur une cible fixe.",
+    ("sigma", "ashe"):      "Flux + Bob : Bob charge sur des cibles stun = impossible de s'échapper.",
+    ("sigma", "ana"):       "Double poke longue portée : Sigma en frontline range + Ana sleep = zone sous contrôle.",
+    ("sigma", "zenyatta"):  "Double poke : Discord + Sigma Hypersphères = pression continue à distance.",
+    ("sigma", "widowmaker"):"Flux immobilise les cibles = Widowmaker OS garanti.",
+
+    # ── Roadhog ───────────────────────────────────────────────────────────────
+    ("roadhog", "ana"):     "Sleep Dart post-Hook : l'ennemi accroché + endormi avant le tir = mort assurée.",
+    ("roadhog", "cassidy"): "Hook + Grenade Flash + Fan du Marteau = combo 3-pièces pour OS n'importe quel DPS.",
+    ("roadhog", "moira"):   "Moira suit Roadhog en flanc et le soigne — il ne meurt pas en solo flanc.",
+    ("roadhog", "zenyatta"):"Discord + Hook = la cible discordée meurt en 1 Hook au lieu de 2.",
+
+    # ── Junker Queen ──────────────────────────────────────────────────────────
+    ("junker-queen", "lucio"):   "Rush brawl : Speed Boost + JQ Rampage = engagement trop rapide pour être contré.",
+    ("junker-queen", "brigitte"):"Rampage + Inspire : JQ applique Anti-Heal, Brig soigne tout le monde = combo brawl suprême.",
+    ("junker-queen", "ana"):     "Grenade biotique + blessures JQ = aucun ennemi ne peut se soigner pendant Rampage.",
+    ("junker-queen", "moira"):   "Moira soin soutenu en combat = JQ reste en vie pendant ses engagements suicidaires.",
+
+    # ── Ramattra ──────────────────────────────────────────────────────────────
+    ("ramattra", "reaper"):  "Annihilation + Death Blossom : ennemis bloqués dans la zone = Faucheur wipe en sécurité.",
+    ("ramattra", "moira"):   "Confluence Moira + Form Ramattra : deux zones AoE simultanées = teamwipe si mal positionné.",
+    ("ramattra", "ana"):     "Nano Annihilation : Ramattra invincible pendant sa Form avec le Biostimulant = imparable.",
+    ("ramattra", "zenyatta"):"Discord + Bras Ramattra : la cible discordée meurt en 3 coups au lieu de 5.",
+
+    # ── Mauga ─────────────────────────────────────────────────────────────────
+    ("mauga", "brigitte"):  "Inspire soigne Mauga en continu dans la mêlée — Mauga dans un brawl avec Brig ne meurt pas.",
+    ("mauga", "lucio"):     "Speed Mauga : un Mauga acceleré est impossible à fuir, il arrive avant qu'on réagisse.",
+    ("mauga", "ana"):       "Grenade biotique annule les soins ennemis pendant que Mauga cage = aucune issue.",
+    ("mauga", "moira"):     "Moira pocket Mauga pendant ses engagements — sa survie en combat devient absurde.",
+
+    # ── Wrecking Ball ─────────────────────────────────────────────────────────
+    ("wrecking-ball", "tracer"):  "Double dive chaos : Ball désoriente, Tracer élimine dans la confusion.",
+    ("wrecking-ball", "lucio"):   "Speed + Balling : encore plus rapide pour les engagements et sorties.",
+    ("wrecking-ball", "genji"):   "Ball perturbe la frontline, Genji arrive dans le dos pour finir les cibles isolées.",
+    ("wrecking-ball", "sombra"):  "Hack sur cibles pile-driveés = ennemis sans défense face au chaos du Ball.",
+
+    # ── Tracer ────────────────────────────────────────────────────────────────
+    ("tracer", "winston"):  "Dive : Winston crée le chaos en frontline, Tracer élimine les supports dans le dos.",
+    ("tracer", "lucio"):    "Speed boost Tracer = vitesse de déplacement irréelle, Blink devient une arme de gap-close.",
+    ("tracer", "zenyatta"): "Discord Orb = Tracer OS en 1 clip au lieu de 2 chargeurs.",
+    ("tracer", "kiriko"):   "Suzu + Rappel = Tracer a deux vies dans le même fight.",
+    ("tracer", "wrecking-ball"):"Ball distraction = Tracer arrive dans le dos sans être ciblée.",
+
+    # ── Soldat:76 ─────────────────────────────────────────────────────────────
+    ("soldier-76", "ana"):      "Nano Visor : tracking + damage boost = multi-kill garanti en quelques secondes.",
+    ("soldier-76", "mercy"):    "Mercy pocket + Biostimulant = Soldat hypercarry pratiquement inarrêtable.",
+    ("soldier-76", "baptiste"): "Champ d'immortalité + Visor = Soldat fait ses dégâts sans risque d'être OS.",
+    ("soldier-76", "lucio"):    "Speed boost + Biostimulant = Soldat en flanc surprise très difficile à anticiper.",
+
+    # ── Sojourn ───────────────────────────────────────────────────────────────
+    ("sojourn", "zenyatta"):    "Discord Orb = tir chargé Sojourn OS n'importe qui, même avec gros HP.",
+    ("sojourn", "sigma"):       "Flux immobilise = tir chargé garanti sur une cible fixe, sans esquive possible.",
+    ("sojourn", "lucio"):       "Speed boost = repositionnement éclair pour trouver les angles de tir idéaux.",
+    ("sojourn", "kiriko"):      "Kitsune Rush accélère le tir de Sojourn, cadence doublée = DPS record.",
+
+    # ── Ashe ──────────────────────────────────────────────────────────────────
+    ("ashe", "baptiste"):   "Champ d'immortalité protège Bob — Bob dure toute sa durée sans être éliminé.",
+    ("ashe", "sigma"):      "Flux + Bob : Bob charge sur des cibles stun, impossible d'esquiver.",
+    ("ashe", "zenyatta"):   "Discord + tir Ashe = élimination à distance garantie en 2 tirs au lieu de 3.",
+    ("ashe", "widowmaker"): "Double sniper depuis deux angles différents = impossible de se couvrir des deux.",
+
+    # ── Widowmaker ────────────────────────────────────────────────────────────
+    ("widowmaker", "zenyatta"):  "Discord = OS à longue distance garanti sur n'importe qui, tanks inclus.",
+    ("widowmaker", "ashe"):      "Double angle poke : 2 snipers = impossible de se cacher des deux en même temps.",
+    ("widowmaker", "sombra"):    "Sombra Hack immobilise la cible = Widowmaker OS garanti pendant le hack.",
+    ("widowmaker", "hanzo"):     "Double sniper = contrôle total de la map, aucun angle sûr pour l'équipe ennemie.",
+
+    # ── Hanzo ─────────────────────────────────────────────────────────────────
+    ("hanzo", "zarya"):     "Combo Grav Dragon : la synergie classique OW — Graviton + Dragon Strike = teamwipe en 2s.",
+    ("hanzo", "lucio"):     "Mur de son dans la Grav : Lucio place son ulte dans le Graviton pour forcer les ennemis.",
+    ("hanzo", "sigma"):     "Flux regroupe les ennemis = Dragon Strike touche le maximum de cibles.",
+    ("hanzo", "widowmaker"):"Double sniper = deux angles longs, aucun terrain n'est sûr.",
+
+    # ── Pharah ────────────────────────────────────────────────────────────────
+    ("pharah", "mercy"):    "Pharmercy : combo iconique — vol permanent + boost de dégâts = incontestable sans hitscan.",
+    ("pharah", "baptiste"): "Champ d'immortalité protège Pharah au sol + Matrice d'amplification double ses dégâts.",
+    ("pharah", "zarya"):    "Graviton + Barrage : ennemis immobiles dans la Grav = roquettes touchent à coup sûr.",
+    ("pharah", "ana"):      "Nano Barrage : Pharah boostée + invincible pendant le Barrage = teamwipe garanti.",
+
+    # ── Junkrat ───────────────────────────────────────────────────────────────
+    ("junkrat", "reinhardt"): "Bouclier cache Junkrat : il spam ses grenades derrière en sécurité totale.",
+    ("junkrat", "orisa"):     "Fortify avance, Junkrat spamme = combo défense et pression.",
+    ("junkrat", "mei"):       "Mur de glace canalise les ennemis dans les grenades en arc = dégâts maximaux.",
+
+    # ── Bastion ───────────────────────────────────────────────────────────────
+    ("bastion", "mercy"):   "Mercy pocket Config Artillerie = DPS maximal, combo imparable si bien protégé.",
+    ("bastion", "orisa"):   "Javelin Spin protège Bastion + Fortify avance = zone infranchissable.",
+    ("bastion", "reinhardt"):"Bouclier devant Bastion Config Artillerie = combo défensif classique.",
+    ("bastion", "baptiste"):"Champ d'immortalité + Matrice d'amplification = Bastion fait des dégâts records.",
+
+    # ── Faucheur ──────────────────────────────────────────────────────────────
+    ("reaper", "zarya"):    "Graviton + Death Blossom : groupe immobile = Faucheur wipe toute l'équipe seul.",
+    ("reaper", "ramattra"): "Annihilation zone + Death Blossom : deux zones AoE en même temps = aucune issue.",
+    ("reaper", "orisa"):    "Attraction de lance attire les ennemis = Faucheur en zone maximale dès l'arrivée.",
+    ("reaper", "moira"):    "Moira suit Faucheur en flanc et le soigne — il ne meurt jamais en solo flanc.",
+    ("reaper", "ana"):      "Nano Death Blossom : voir Ana — combo S-tier qui retourne n'importe quel fight.",
+
+    # ── Symmetra ──────────────────────────────────────────────────────────────
+    ("symmetra", "bastion"):  "Téléporteur repositionne Bastion sur un angle surprise = la défense devient une embuscade.",
+    ("symmetra", "torbjorn"): "Double tourelle : Symm + Torb = flancs complètement verrouillés.",
+    ("symmetra", "mei"):      "Mur de glace + Barrière photonique = zone infranchissable pendant plusieurs secondes.",
+    ("symmetra", "reinhardt"):"Bouclier protège Symmetra qui place ses tourelles en sécurité = défense combo.",
+
+    # ── Sombra ────────────────────────────────────────────────────────────────
+    ("sombra", "wrecking-ball"): "Ball pile-drive + Sombra Hack = ennemis sans capacités en plein chaos.",
+    ("sombra", "reaper"):        "Hack élimine la fuite ennemie + Death Blossom = aucune issue pour la cible.",
+    ("sombra", "tracer"):        "Double flanc simultané : Sombra hack la frontline, Tracer finit la backline.",
+    ("sombra", "winston"):       "Hack + Winston jump = cible isolée sans capacités face au tank agressif.",
+
+    # ── Moira ─────────────────────────────────────────────────────────────────
+    ("moira", "reaper"):        "Fade coordination : deux flancs simultanés submergent la backline de partout.",
+    ("moira", "reinhardt"):     "Moira soin constant derrière le bouclier = la composition brawl la plus résiliente.",
+    ("moira", "ramattra"):      "Confluence + Form Ramattra = deux zones AoE superposées = teamwipe zonal.",
+    ("moira", "junker-queen"):  "Soin soutenu = JQ reste en vie pendant ses engagements les plus risqués.",
+    ("moira", "mauga"):         "Moira pocket Mauga en combat = il ne meurt tout simplement pas en brawl.",
+
+    # ── Baptiste ──────────────────────────────────────────────────────────────
+    ("baptiste", "soldier-76"): "Champ d'immortalité + Visor = Soldat fait ses dégâts sans risque d'être OS.",
+    ("baptiste", "pharah"):     "Immortalité protège Pharah + Matrice double ses dégâts = combo aérien record.",
+    ("baptiste", "reinhardt"):  "Matrice d'amplification sur les alliés de Rein = dégâts en push doublés.",
+    ("baptiste", "ana"):        "Double healer burst : Ana grenade + Baptiste burst = survie d'équipe maximale.",
+    ("baptiste", "ashe"):       "Matrice d'amplification double les dégâts d'Ashe = tireur d'élite en surpuissance.",
+
+    # ── Cassidy ───────────────────────────────────────────────────────────────
+    ("cassidy", "zarya"):   "Graviton + Cowboy Deadeye : cibles immobiles dans la Grav = Deadeye OS garantis.",
+    ("cassidy", "orisa"):   "Javelin Throw + Grenade Flash = double CC = mort garantie sur toute cible.",
+    ("cassidy", "ana"):     "Nano + Deadeye : dégâts boostés pendant la visée = éliminations ultra rapides.",
+    ("cassidy", "sigma"):   "Flux immobilise = Deadeye OS garanti sur des cibles figées.",
+
+    # ── Torbjörn ──────────────────────────────────────────────────────────────
+    ("torbjorn", "reinhardt"):  "Bouclier cache la tourelle Torb = personne ne peut la détruire sans percer le shield.",
+    ("torbjorn", "symmetra"):   "Double tourelle : flancs complètement verrouillés pour la défense.",
+    ("torbjorn", "mercy"):      "Mercy pocket la tourelle niveau 2 = DPS de tourelle maximal.",
+    ("torbjorn", "orisa"):      "Fortify bloque l'avance + tourelle Torb contrôle la zone = défense tanky.",
+
+    # ── Mei ───────────────────────────────────────────────────────────────────
+    ("mei", "zarya"):   "Mur de glace + Graviton : Mei sépare + Zarya aspire = teamwipe en deux temps.",
+    ("mei", "hanzo"):   "Mur canalise les ennemis vers le Dragon Strike = touchés garantis.",
+    ("mei", "junkrat"): "Mur bloque la fuite + grenades Junkrat sur les ennemis coincés = dégâts maximaux.",
+    ("mei", "reinhardt"):"Mur sépare l'équipe ennemie + Earthshatter sur les fragments isolés.",
+
+    # ── Echo ──────────────────────────────────────────────────────────────────
+    ("echo", "mercy"):  "Mercy boost + Rayon focalisé : dégâts de burst records sur une cible en phase de charge.",
+    ("echo", "ana"):    "Echo copie Ana = double Nano possible en un même fight.",
+    ("echo", "zenyatta"):"Discord + Rayon focalisé = burst combiné qui détruit en moins d'une seconde.",
+    ("echo", "zarya"):  "Echo copie Zarya = double Graviton en un combat = deux teamwipes possibles.",
+
+    # ── Venture ───────────────────────────────────────────────────────────────
+    ("venture", "lucio"):   "Speed boost permet à Venture d'arriver encore plus vite de sous terre.",
+    ("venture", "ana"):     "Grenade biotique annule les soins ennemis pendant que Venture sort avec son AoE.",
+    ("venture", "kiriko"):  "Suzu protège Venture des CC qui bloqueraient sa sortie de terrier.",
+
+    # ── Nouveaux héros ────────────────────────────────────────────────────────
+    ("hazard", "lucio"):        "Speed boost + mobilité verticale de Hazard = engagements depuis les hauteurs en un instant.",
+    ("hazard", "ana"):          "Nano Hazard en plein engage vertical = impossible à contrer.",
+    ("hazard", "brigitte"):     "Inspire soigne Hazard en brawl — son agressivité de tank est soutenue en continu.",
+    ("hazard", "junker-queen"): "Double tank brawl agressif : Hazard + JQ submergent la frontline ennemie.",
+
+    ("domina", "zenyatta"):     "Discord + pression Domina = cible débordée depuis deux fronts simultanément.",
+    ("domina", "ana"):          "Nano Domina en engage = impossible de l'arrêter quand elle est chargée.",
+    ("domina", "reaper"):       "Domina attire les ennemis + Death Blossom = teamwipe en zone.",
+    ("domina", "moira"):        "Moira suit Domina et la soigne — le duo brawl le plus résistant.",
+
+    ("anran", "reinhardt"):     "Bouclier Rein protège Anran qui poke à haute cadence derrière en sécurité.",
+    ("anran", "junker-queen"):  "JQ engage en frontline pendant qu'Anran poke depuis la mi-portée = pression double.",
+    ("anran", "mauga"):         "Mauga absorbe les dégâts en front, Anran poke derrière = duo poke-brawl.",
+    ("anran", "orisa"):         "Orisa tient la zone, Anran spam sa cadence derrière la protection.",
+
+    ("mizuki", "tracer"):       "Suivi mobile + Tracer = deux flanqueurs en synergie dans la backline.",
+    ("mizuki", "genji"):        "Mizuki soutient Genji depuis le flanc, ensemble ils submergent les supports.",
+    ("mizuki", "kiriko"):       "Double support mobile : combo de mobilité maximale, toujours au bon endroit.",
+    ("mizuki", "wrecking-ball"):"Mizuki suit Ball dans son chaos pour soigner au plus près.",
+
+    ("freja", "zenyatta"):      "Discord + Freja longue portée = cible exposée détruite rapidement.",
+    ("freja", "sigma"):         "Flux immobilise = Freja prend le temps de viser sans risque.",
+    ("freja", "ana"):           "Grenade biotique annule les soins pendant que Freja accumule les dégâts.",
+
+    ("sierra", "zenyatta"):     "Discord + Sierra snipe = OS garanti sur n'importe quelle cible.",
+    ("sierra", "orisa"):        "Orisa immobilise les ennemis = Sierra prend ses angles en sécurité totale.",
+    ("sierra", "baptiste"):     "Matrice d'amplification double les dégâts de Sierra = sniper en surpuissance.",
+
+    ("wuyang", "lucio"):        "Speed boost + mobilité Wuyang = engage agressif difficile à anticiper.",
+    ("wuyang", "brigitte"):     "Inspire soigne Wuyang en brawl — son agressivité est soutenue en permanence.",
+    ("wuyang", "ana"):          "Nano Wuyang en engage = force de frappe maximale.",
+
+    ("jetpack-cat", "lucio"):   "Double mobilité : JetpackCat + Speed Boost = duo dive ultra rapide.",
+    ("jetpack-cat", "winston"): "Double dive aérien : Winston + JetpackCat = backline débordée sous deux axes.",
+    ("jetpack-cat", "tracer"):  "Triple dive : JetpackCat + Tracer + Winston = chaos total sur la backline.",
+
+    ("vendetta", "sombra"):     "Sombra Hack immobilise = Vendetta burst depuis le flanc en toute sécurité.",
+    ("vendetta", "tracer"):     "Double flanqueur : Vendetta + Tracer = deux assassins simultanés en backline.",
+    ("vendetta", "wrecking-ball"):"Ball désoriente = Vendetta arrive dans le dos pendant la confusion.",
+
+    ("emre", "reinhardt"):      "Bouclier protège Emre qui engage depuis un angle sûr.",
+    ("emre", "zarya"):          "Graviton + burst Emre = cibles immobiles = dégâts maximaux.",
+    ("emre", "orisa"):          "Orisa contrôle la zone = Emre prend ses engagements en sécurité.",
+}
+
+
 # ─── Counter-picker ───────────────────────────────────────────────────────────
 
 # Explications spécifiques par matchup (hero_slug, enemy_slug)

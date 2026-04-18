@@ -6,9 +6,10 @@ from . import views
 
 urlpatterns = [
     # Héros
-    path("heroes/",                  views.HeroListView.as_view(),  name="hero-list"),
-    path("heroes/<slug:slug>/",      views.HeroDetailView.as_view(), name="hero-detail"),
-    path("heroes/<slug:slug>/counters/", views.hero_counters,        name="hero-counters"),
+    path("heroes/",                       views.HeroListView.as_view(),  name="hero-list"),
+    path("heroes/<slug:slug>/",           views.HeroDetailView.as_view(), name="hero-detail"),
+    path("heroes/<slug:slug>/counters/",  views.hero_counters,           name="hero-counters"),
+    path("heroes/<slug:slug>/synergies/", views.hero_synergies,          name="hero-synergies"),
 
     # Maps
     path("maps/",                    views.MapListView.as_view(),   name="map-list"),

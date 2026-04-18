@@ -57,6 +57,8 @@ class Hero(models.Model):
     counters = models.JSONField(default=dict, verbose_name="Counters")
     # Points forts/faibles : liste de { "label": str, "rating": "++" | "+" | "-" | "--" }
     traits = models.JSONField(default=list, verbose_name="Traits")
+    # Synergies : dict slug→score (1-20). Score élevé = synergie forte.
+    synergies = models.JSONField(default=dict, verbose_name="Synergies")
     DIFFICULTY_CHOICES = [
         (1, "Facile"),
         (2, "Moyen"),

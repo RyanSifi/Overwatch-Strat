@@ -11,3 +11,6 @@ export const getHeroCounters = (slug) =>
 
 export const suggestCounters = (enemyHeroes) =>
   client.post("/counters/suggest/", { enemy_heroes: enemyHeroes }).then((r) => r.data);
+
+export const getHeroSynergies = (slug) =>
+  client.get(`/heroes/${slug}/synergies/`).then((r) => r.data);
