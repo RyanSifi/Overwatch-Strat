@@ -82,6 +82,60 @@ class Hero(models.Model):
         return f"{self.name} ({self.role})"
 
 
+class MetaComp(models.Model):
+    """
+    Composition méta du patch actuel.
+    Chaque comp a un style, un tier, et une liste de héros recommandés.
+    """
+    STYLE_CHOICES = [
+        ("dive",   "Dive"),
+        ("brawl",  "Brawl"),
+        ("poke",   "Poke"),
+        ("rush",   "Rush"),
+        ("hybrid", "Hybrid"),
+    ]
+    TIER_CHOICES = [("S","S"),("A","A"),("B","B"),("C","C")]
+
+    name        = models.CharField(max_length=80, verbose_name="Nom")
+    style       = models.CharField(max_length=20, choices=STYLE_CHOICES)
+    tier        = models.CharField(max_length=5,  choices=TIER_CHOICES, default="A")
+    description = models.TextField(blank=True)
+    # ["slug1","slug2","slug3","slug4","slug5"]
+    heroes      = models.JSONField(default=list, verbose_name="Héros")
+    patch       = models.CharField(max_length=20, default="S14", verbose_name="Patch")
+    win_rate    = models.FloatField(default=0.0, verbose_name="Win rate %")
+    is_featured = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-tier", "style", "name"]
+        verbose_name = "Comp méta"
+        verbose_name_plural = "Comps méta"
+
+    def __str__(self):
+        return f"{self.name} ({self.style} — {self.tier})"
+
+
+class PatchNote(models.Model):
+    """
+    Note de patch par version.
+    changes : liste de { "hero_slug": str, "type": "buff"|"nerf"|"rework"|"fix", "text": str }
+    """
+    version     = models.CharField(max_length=20, unique=True, verbose_name="Version")
+    date        = models.DateField(verbose_name="Date")
+    title       = models.CharField(max_length=120, blank=True, verbose_name="Titre")
+    summary     = models.TextField(blank=True, verbose_name="Résumé")
+    changes     = models.JSONField(default=list, verbose_name="Changements")
+    is_latest   = models.BooleanField(default=False, verbose_name="Patch actuel")
+
+    class Meta:
+        ordering = ["-date"]
+        verbose_name = "Patch Note"
+        verbose_name_plural = "Patch Notes"
+
+    def __str__(self):
+        return f"Patch {self.version} — {self.date}"
+
+
 class Map(models.Model):
     """
     Représente une map Overwatch avec ses phases et les picks recommandés.

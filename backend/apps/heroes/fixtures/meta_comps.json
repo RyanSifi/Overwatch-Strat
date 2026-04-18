@@ -1,0 +1,170 @@
+[
+  {
+    "model": "heroes.metacomp",
+    "pk": 1,
+    "fields": {
+      "name": "Dive Classique",
+      "style": "dive",
+      "tier": "S",
+      "patch": "S14",
+      "win_rate": 54.2,
+      "is_featured": true,
+      "description": "La composition dive la plus polyvalente du méta. Winston + Lucio permettent des engagements ultra rapides sur la backline ennemie. Ana nanobooste Winston ou Genji pour un teamwipe garanti.",
+      "heroes": ["winston", "lucio", "tracer", "genji", "ana"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 2,
+    "fields": {
+      "name": "Brawl Mauga",
+      "style": "brawl",
+      "tier": "S",
+      "patch": "S14",
+      "win_rate": 53.8,
+      "is_featured": true,
+      "description": "Mauga en frontline avec Brigitte qui l'inspire en continu = Mauga ne meurt tout simplement pas. Reaper finit au corps à corps, Ana grenade pour verrouiller les soins ennemis.",
+      "heroes": ["mauga", "brigitte", "reaper", "cassidy", "ana"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 3,
+    "fields": {
+      "name": "Poke Sigma",
+      "style": "poke",
+      "tier": "S",
+      "patch": "S14",
+      "win_rate": 53.1,
+      "is_featured": true,
+      "description": "Composition de poke longue portée très difficile à punir. Sigma protège la ligne, Sojourn + Ashe OS depuis la distance. Zenyatta Discord amplifie chaque tir, Baptiste double les dégâts avec la Matrice.",
+      "heroes": ["sigma", "zenyatta", "sojourn", "ashe", "baptiste"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 4,
+    "fields": {
+      "name": "Rush LúcioRio",
+      "style": "rush",
+      "tier": "A",
+      "patch": "S14",
+      "win_rate": 52.4,
+      "is_featured": false,
+      "description": "Lucio + Brigitte = speed boost constant sur toute l'équipe. Reinhardt charge en tête, Reaper finit la backline. Combo le plus rapide du jeu, impossible à contrer si bien exécuté.",
+      "heroes": ["reinhardt", "lucio", "reaper", "soldier-76", "brigitte"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 5,
+    "fields": {
+      "name": "Poke Orisa",
+      "style": "poke",
+      "tier": "A",
+      "patch": "S14",
+      "win_rate": 51.9,
+      "is_featured": false,
+      "description": "Orisa tient le terrain avec Fortify, Widowmaker + Hanzo contrôlent tous les angles longue portée. Zenyatta Discord garantit les OS. Composition qui verrouille la progression ennemie.",
+      "heroes": ["orisa", "zenyatta", "widowmaker", "hanzo", "mercy"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 6,
+    "fields": {
+      "name": "Dive D.Va",
+      "style": "dive",
+      "tier": "A",
+      "patch": "S14",
+      "win_rate": 51.5,
+      "is_featured": false,
+      "description": "D.Va + Winston en double dive tank. Lucio speed boost les deux tanks simultanément. Tracer harasse la backline pendant que les tanks créent le chaos en frontline.",
+      "heroes": ["dva", "lucio", "tracer", "winston", "kiriko"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 7,
+    "fields": {
+      "name": "Brawl Junker Queen",
+      "style": "brawl",
+      "tier": "A",
+      "patch": "S14",
+      "win_rate": 51.2,
+      "is_featured": false,
+      "description": "Junker Queen + Brigitte = duo brawl inarrêtable. Rampage + Inspire = personne ne se soigne. Moira suit en fade pour les soins soutenus. Composition idéale pour les maps fermées.",
+      "heroes": ["junker-queen", "brigitte", "reaper", "cassidy", "moira"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 8,
+    "fields": {
+      "name": "Graviton Combo",
+      "style": "poke",
+      "tier": "A",
+      "patch": "S14",
+      "win_rate": 50.8,
+      "is_featured": false,
+      "description": "La combo ultime classique d'OW. Zarya Graviton + Hanzo Dragon Strike = teamwipe en 2 secondes. Sigma protège Zarya pendant qu'elle charge. Baptiste Matrice amplifie le Dragon.",
+      "heroes": ["zarya", "sigma", "hanzo", "cassidy", "baptiste"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 9,
+    "fields": {
+      "name": "Pharmercy Pocket",
+      "style": "poke",
+      "tier": "B",
+      "patch": "S14",
+      "win_rate": 49.6,
+      "is_featured": false,
+      "description": "Pharah avec Mercy pocket = combo impossible à contrer sans hitscan. Reinhardt protège Mercy au sol. Soldat:76 comme hitscan de backup en cas de contre. Ana grenade comme finisher.",
+      "heroes": ["reinhardt", "mercy", "pharah", "soldier-76", "ana"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 10,
+    "fields": {
+      "name": "Ramattra Control",
+      "style": "brawl",
+      "tier": "B",
+      "patch": "S14",
+      "win_rate": 49.1,
+      "is_featured": false,
+      "description": "Ramattra en Form contrôle une zone entière pendant 3 secondes. Reaper Death Blossom dans la zone = teamwipe garanti. Moira soin continu pour tenir le front. Très fort sur les maps à point.",
+      "heroes": ["ramattra", "moira", "reaper", "sojourn", "ana"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 11,
+    "fields": {
+      "name": "Ball Chaos",
+      "style": "dive",
+      "tier": "B",
+      "patch": "S14",
+      "win_rate": 48.7,
+      "is_featured": false,
+      "description": "Wrecking Ball crée le chaos en frontline pendant que Sombra hack les cibles isolées. Tracer finit dans la confusion. Très haut skill ceiling mais dévastateur si maîtrisé.",
+      "heroes": ["wrecking-ball", "sombra", "tracer", "genji", "kiriko"]
+    }
+  },
+  {
+    "model": "heroes.metacomp",
+    "pk": 12,
+    "fields": {
+      "name": "Bunker Bastion",
+      "style": "poke",
+      "tier": "B",
+      "patch": "S14",
+      "win_rate": 48.3,
+      "is_featured": false,
+      "description": "Orisa + Bastion en bunker : Fortify protège Bastion pendant qu'il DPS en Config Artillerie. Mercy pocket Bastion. Torbjörn verrouille les flancs. Très efficace en défense.",
+      "heroes": ["orisa", "mercy", "bastion", "torbjorn", "zenyatta"]
+    }
+  }
+]

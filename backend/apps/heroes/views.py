@@ -8,8 +8,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from .models import Hero, Map
-from .serializers import HeroSerializer, HeroListSerializer, MapSerializer
+from .models import Hero, Map, MetaComp, PatchNote
+from .serializers import HeroSerializer, HeroListSerializer, MapSerializer, MetaCompSerializer, PatchNoteSerializer
 
 
 # ─── Héros ───────────────────────────────────────────────────────────────────
@@ -98,6 +98,41 @@ def hero_counters(request, slug):
         "favorable":  favorable_sorted,
         "defavorable": defavorable_sorted,
     })
+
+
+# ─── Patch Notes ─────────────────────────────────────────────────────────────
+
+class PatchNoteListView(generics.ListAPIView):
+    """GET /api/patches/  — liste tous les patches, triés par date décroissante."""
+    permission_classes = [AllowAny]
+    serializer_class   = PatchNoteSerializer
+    pagination_class   = None
+    queryset           = PatchNote.objects.all()
+
+
+class PatchNoteDetailView(generics.RetrieveAPIView):
+    """GET /api/patches/<version>/"""
+    permission_classes = [AllowAny]
+    serializer_class   = PatchNoteSerializer
+    queryset           = PatchNote.objects.all()
+    lookup_field       = "version"
+
+
+# ─── Méta ────────────────────────────────────────────────────────────────────
+
+class MetaCompListView(generics.ListAPIView):
+    """GET /api/meta/  — liste toutes les comps méta. Filtre: ?style=dive|brawl|poke|rush|hybrid&tier=S"""
+    permission_classes = [AllowAny]
+    serializer_class   = MetaCompSerializer
+    pagination_class   = None
+
+    def get_queryset(self):
+        qs    = MetaComp.objects.all()
+        style = self.request.query_params.get("style")
+        tier  = self.request.query_params.get("tier")
+        if style: qs = qs.filter(style=style)
+        if tier:  qs = qs.filter(tier=tier)
+        return qs
 
 
 # ─── Maps ────────────────────────────────────────────────────────────────────

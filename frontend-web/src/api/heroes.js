@@ -14,3 +14,9 @@ export const suggestCounters = (enemyHeroes) =>
 
 export const getHeroSynergies = (slug) =>
   client.get(`/heroes/${slug}/synergies/`).then((r) => r.data);
+
+export const getMetaComps = (params = {}) =>
+  client.get("/meta/", { params }).then((r) => r.data);
+
+export const getPatchNotes  = ()        => client.get("/patches/").then((r) => r.data);
+export const getPatchDetail = (version) => client.get(`/patches/${version}/`).then((r) => r.data);
