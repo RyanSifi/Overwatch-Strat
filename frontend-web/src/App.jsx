@@ -11,6 +11,7 @@ import CounterPicker from "./pages/CounterPicker";
 import Guide        from "./pages/Guide";
 import TierList     from "./pages/TierList";
 import Matrix       from "./pages/Matrix";
+import TeamBuilder  from "./pages/TeamBuilder";
 import Tracker      from "./pages/Tracker";
 import Coach        from "./pages/Coach";
 import Profile      from "./pages/Profile";
@@ -20,6 +21,7 @@ const NAV_LINKS = [
   { to: "/guide",   label: "Guide",    icon: "🗺" },
   { to: "/tiers",   label: "Tier List",icon: "📊" },
   { to: "/matrix",  label: "Matrix",   icon: "⬛" },
+  { to: "/builder", label: "Builder",  icon: "🧩" },
   { to: "/tracker", label: "Tracker",  icon: "📈" },
   { to: "/coach",   label: "Coach IA", icon: "🤖" },
   { to: "/profile", label: "Profil",   icon: "👤" },
@@ -192,6 +194,7 @@ export default function App() {
             <Route path="/guide"   element={<Guide />} />
             <Route path="/tiers"   element={<TierList />} />
             <Route path="/matrix"  element={<Matrix />} />
+            <Route path="/builder" element={<TeamBuilder />} />
             <Route path="/tracker" element={<Tracker />} />
             <Route path="/coach"   element={<Coach />} />
             <Route path="/profile" element={<Profile />} />
