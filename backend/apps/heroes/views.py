@@ -221,7 +221,7 @@ MATCHUP_REASONS = {
     ("reinhardt", "junkrat"):  "Reinhardt écrase Junkrat car le bouclier absorbe toutes ses grenades et son pneu",
     ("reinhardt", "mei"):      "Reinhardt bat Mei car le bouclier empêche le gel à distance et Fortifier lui résiste",
     ("reinhardt", "symmetra"): "Reinhardt contre Symmetra car le bouclier absorbe ses rayons et détruit ses tourelles",
-    ("reinhardt", "torbjorn"):  "Reinhardt neutralise Torbjörn car le bouclier tient face à la tourelle et il charge dessus",
+    ("reinhardt", "torbjorn"):  "Reinhardt avance bouclier levé pour annuler entièrement la tourelle — derrière le bouclier aucun allié ne prend de dégâts. Une fois au contact il détruit la tourelle d'un marteau et Torbjörn n'a aucune mobilité pour fuir.",
     ("reinhardt", "widowmaker"):"Reinhardt bat Widowmaker car son bouclier bloque le tir chargé et il peut la charger",
     ("reinhardt", "sojourn"):   "Reinhardt contre Sojourn car le bouclier bloque ses tirs chargés en droite ligne",
     # ── Orisa ─────────────────────────────────────────────────────────────────
@@ -232,15 +232,15 @@ MATCHUP_REASONS = {
     ("orisa", "roadhog"):      "Orisa contre Roadhog car elle le pull hors position avant qu'il puisse accrocher",
     ("orisa", "doomfist"):     "Orisa écrase Doomfist car elle peut l'arrêter dans son dash avec la javeline",
     ("orisa", "reinhardt"):    "Orisa contre Reinhardt car elle brise son bouclier et le pull vers son équipe",
-    # ── Hazard ────────────────────────────────────────────────────────────────
-    ("hazard", "venture"):     "Hazard contre Venture car il peut placer ses piques à la sortie du sol et l'intercepter",
-    ("hazard", "reaper"):      "Hazard bat Faucheur car ses piques le tiennent à distance — il ne peut pas l'approcher",
-    ("hazard", "cassidy"):     "Hazard contre Cassidy car sa mobilité lui permet d'esquiver le flashbang",
-    ("hazard", "soldier-76"):  "Hazard neutralise Soldat:76 car il prend des angles verticaux hors de portée",
-    ("hazard", "ashe"):        "Hazard bat Ashe car il peut bondir sur elle avant qu'elle vise",
-    ("hazard", "widowmaker"):  "Hazard contre Widowmaker car sa mobilité rend difficile de le viser",
-    ("hazard", "symmetra"):    "Hazard détruit les tourelles de Symmetra avec ses piques depuis les hauteurs",
-    ("hazard", "torbjorn"):    "Hazard contre Torbjörn car il plonge sur la tourelle en hauteur",
+    # ── Hazard (tank mobile, piques de contrôle + escalade verticale) ───────────
+    ("hazard", "venture"):     "Hazard place ses piques exactement à la sortie du terrier de Venture — dès qu'il émerge du sol, les piques lui infligent des dégâts immédiats. Anticipe sa direction et pose ta zone avant qu'il sorte.",
+    ("hazard", "reaper"):      "Hazard pose un rideau de piques entre lui et Faucheur, puis prend de la hauteur — Faucheur doit traverser les piques pour approcher et ne peut pas le viser depuis le bas. Joue sur ta verticalité pour qu'il ne puisse jamais entrer dans sa fenêtre de dégâts.",
+    ("hazard", "cassidy"):     "Hazard esquive le Flashbang de Cassidy en bougeant verticalement au moment du lancer — le Flashbang doit atterrir à tes pieds pour te toucher. Monte sur un rebord ou saute dès qu'il engage pour que la grenade atterrisse dans le vide.",
+    ("hazard", "soldier-76"):  "Hazard prend les hauteurs hors de la trajectoire des rafales de Soldat:76 — ses tirs sont optimisés pour la mi-portée en ligne droite, pas en angle vertical. Depuis un rebord élevé, tes piques couvrent le sol et lui rendent l'approche impossible.",
+    ("hazard", "ashe"):        "Hazard bondit sur Ashe depuis un angle élevé avant qu'elle ait le temps de charger son tir — elle a besoin de 0,7 seconde pour viser, et ton approche aérienne ne lui laisse pas cette fenêtre. Si elle tire B.O.B., tes piques le ralentissent.",
+    ("hazard", "widowmaker"):  "Hazard change constamment de niveau vertical — Widowmaker doit recharger entre chaque tir chargé, et pendant ce temps tu changes de position. Elle ne peut pas te suivre avec un scope si tu passes du sol au plafond entre chaque échange.",
+    ("hazard", "symmetra"):    "Hazard détruit les tourelles de Symmetra depuis les hauteurs avec ses piques — les tourelles ne peuvent pas ajuster leur angle de tir vers le haut pour le cibler. Plonge sur les tourelles une par une depuis les rebords élevés qu'elles ne couvrent pas.",
+    ("hazard", "torbjorn"):    "Hazard descend sur la tourelle de Torbjörn depuis un angle vertical où elle ne peut pas pivoter suffisamment — la tourelle a un angle de rotation limité. Torbjörn lui-même n'a aucune mobilité pour esquiver les piques au sol.",
     # ── Ramattra ──────────────────────────────────────────────────────────────
     ("ramattra", "mei"):       "Ramattra domine Mei car la forme Nemesis résiste au freeze — il s'approche sans être ralenti",
     ("ramattra", "cassidy"):   "Ramattra bat Cassidy car la forme Nemesis absorbe ses dégâts par rafale",
@@ -407,11 +407,11 @@ MATCHUP_REASONS = {
     ("venture", "bastion"):    "Venture bat Bastion car il sort du sol derrière lui en surprise",
     ("venture", "torbjorn"):   "Venture détruit la tourelle de Torbjörn en passant sous terre",
     ("venture", "reinhardt"):  "Venture contre Reinhardt car il peut contourner son bouclier par le bas",
-    # ── Emre (DPS mobile) ─────────────────────────────────────────────────────
-    ("emre", "tracer"):        "Emre contre Tracer car ses capacités de fuite lui permettent de survivre",
-    ("emre", "genji"):         "Emre bat Genji car il peut esquiver ses attaques et riposter efficacement",
-    ("emre", "zenyatta"):      "Emre dive sur Zenyatta — il n'a aucun outil de fuite",
-    ("emre", "widowmaker"):    "Emre contre Widowmaker car sa mobilité le rend difficile à viser",
+    # ── Emre (DPS résilient, survie exceptionnelle, flanc) ────────────────────
+    ("emre", "tracer"):        "Emre encaisse les burst de Tracer sans mourir grâce à sa survie passive — quand elle vide ses chargeurs sur lui il est encore debout et riposte, obligeant Tracer à Recall sans élimination. Elle gaspille ses ressources sur une cible qui ne tombe pas.",
+    ("emre", "genji"):         "Emre absorbe le combo de Genji avec sa survie et contre-attaque pendant le dash — le burst initial ne le tue pas, il riposte après l'engagement au moment où Genji est le plus exposé. Genji s'attend à one-combo sa cible, pas à se retrouver en duel prolongé.",
+    ("emre", "zenyatta"):      "Emre dive sur Zenyatta et absorbe le Discord Orb avec sa survie native — même discordé il tient assez longtemps pour l'éliminer. Zenyatta n'a aucune mobilité pour fuir, et ses 200 HP fondent dès qu'Emre est au contact.",
+    ("emre", "widowmaker"):    "Emre approche Widowmaker en zigzaguant entre les couvertures — elle a besoin d'une cible stable pour charger son tir. Sa survie lui permet d'absorber un tir non chargé sans être éliminé, puis il ferme la distance avant sa recharge.",
 
     # ── Ana ────────────────────────────────────────────────────────────────────
     ("ana", "sojourn"):        "Ana contre Sojourn car la fléchette soporifique l'empêche de charger sa glissade",
@@ -535,48 +535,61 @@ MATCHUP_REASONS = {
     ("lifeweaver", "sombra"):   "Lifeweaver bat Sombra car il peut repositionner les alliés hackés",
     ("lifeweaver", "sojourn"):  "Lifeweaver contre Sojourn car il sauve les alliés one-shotés avec la résurrection",
     ("lifeweaver", "ashe"):     "Lifeweaver bat Ashe car il repositionne ses alliés hors des lignes de mire",
-    # ── Mizuki ────────────────────────────────────────────────────────────────
-    ("mizuki", "roadhog"):     "Mizuki contre Roadhog car ses soins permettent à l'équipe de tenir son agression",
-    ("mizuki", "mauga"):       "Mizuki bat Mauga car ses soins constants compensent son volume de feu",
-    ("mizuki", "orisa"):       "Mizuki contre Orisa car ses soins et utilitaires maintiennent l'équipe en vie",
-    ("mizuki", "reinhardt"):   "Mizuki bat Reinhardt car elle soigne l'équipe pendant les poussées",
-    ("mizuki", "tracer"):      "Mizuki contre Tracer car ses soins rapides sauvent les alliés visés",
-    ("mizuki", "genji"):       "Mizuki bat Genji car elle peut soigner ses alliés plus vite qu'il ne les tue",
-    ("mizuki", "wrecking-ball"):"Mizuki contre Wrecking Ball car ses soins tiennent l'équipe pendant ses disruptions",
-    # ── Wuyang ────────────────────────────────────────────────────────────────
-    ("wuyang", "genji"):       "Wuyang contre Genji car ses utilitaires protègent les alliés de ses assauts",
-    ("wuyang", "tracer"):      "Wuyang bat Tracer car ses soins rapides sauvent les alliés visés",
-    ("wuyang", "sombra"):      "Wuyang contre Sombra car ses capacités maintiennent les alliés hackés en vie",
-    ("wuyang", "roadhog"):     "Wuyang bat Roadhog car ses soins compensent son agression de crochet",
-    ("wuyang", "widowmaker"):  "Wuyang contre Widowmaker car ses soins annulent ses picks un par un",
-    # ── Jetpack Cat ───────────────────────────────────────────────────────────
-    ("jetpack-cat", "genji"):  "Jetpack Cat contre Genji car sa mobilité aérienne lui permet de fuir ses assauts",
-    ("jetpack-cat", "tracer"): "Jetpack Cat bat Tracer car il peut soigner rapidement les alliés visés",
-    ("jetpack-cat", "sombra"): "Jetpack Cat contre Sombra car il maintient les alliés hackés en vie",
-    ("jetpack-cat", "roadhog"):"Jetpack Cat bat Roadhog car ses soins compensent ses crochets",
-    # ── Freja ─────────────────────────────────────────────────────────────────
-    ("freja", "zenyatta"):     "Freja bat Zenyatta car elle dive sur lui — aucun escape possible",
-    ("freja", "widowmaker"):   "Freja contre Widowmaker car sa mobilité rend sa visée difficile",
-    ("freja", "ana"):          "Freja bat Ana car elle peut l'approcher rapidement",
-    ("freja", "mercy"):        "Freja contre Mercy car sa mobilité lui permet de la suivre en vol",
-    ("freja", "lucio"):        "Freja bat Lucio car elle peut le chasser grâce à sa mobilité",
-    ("freja", "torbjorn"):     "Freja contre Torbjörn car elle plonge sur lui avant qu'il place sa tourelle",
-    ("freja", "bastion"):      "Freja bat Bastion car elle peut flanquer depuis les hauteurs",
-    # ── Sierra ────────────────────────────────────────────────────────────────
-    ("sierra", "zenyatta"):    "Sierra bat Zenyatta car elle peut le cibler efficacement",
-    ("sierra", "widowmaker"):  "Sierra contre Widowmaker car elle perturbe son positionnement",
-    ("sierra", "ana"):         "Sierra bat Ana car elle peut l'approcher rapidement",
-    ("sierra", "bastion"):     "Sierra contre Bastion car elle flanque depuis les angles",
-    ("sierra", "torbjorn"):    "Sierra bat Torbjörn car elle détruit sa tourelle rapidement",
-    # ── Vendetta ──────────────────────────────────────────────────────────────
-    ("vendetta", "zenyatta"):  "Vendetta bat Zenyatta car il n'a aucune défense contre un flanqueur",
-    ("vendetta", "widowmaker"):"Vendetta contre Widowmaker car il perturbe son positionnement longue portée",
-    ("vendetta", "ana"):       "Vendetta bat Ana car il l'approche trop vite pour qu'elle réagisse",
-    ("vendetta", "reinhardt"): "Vendetta contre Reinhardt car il peut contourner son bouclier",
-    ("vendetta", "bastion"):   "Vendetta bat Bastion car il flanque hors de sa zone de feu",
-    ("vendetta", "sigma"):     "Vendetta contre Sigma car il passe ses boucliers par les flancs",
-    ("vendetta", "mercy"):     "Vendetta bat Mercy car elle ne peut pas fuir un flanqueur mobile",
-    ("vendetta", "lifeweaver"):"Vendetta contre Lifeweaver car il n'a aucun outil offensif pour le stopper",
+    # ── Mizuki (support tactique, soins constants haute cadence) ─────────────
+    ("mizuki", "roadhog"):     "Mizuki soigne ses alliés assez vite pour compenser les one-shots de Roadhog — son crochet + Cochon entier tente de tuer en une seconde, mais si l'allié ciblé a ses soins actifs il survit. Garde tes soins en priorité sur la cible de son crochet.",
+    ("mizuki", "mauga"):       "Mizuki tient la frontline en vie pendant que Mauga vide ses deux mitrailleuses — sa cadence de soins élevée surpasse le volume de feu soutenu de Mauga sur la durée. Mauga gagne les fights courts, Mizuki gagne les fights longs.",
+    ("mizuki", "orisa"):       "Mizuki annule l'effet d'isolement d'Orisa — quand la Javeline projette un allié, Mizuki lui transfère ses soins immédiatement pour qu'il survive l'exposition. Son burst heal compense les fenêtres où les alliés sont hors de couverture.",
+    ("mizuki", "reinhardt"):   "Mizuki soigne l'équipe pendant la charge de Reinhardt — son burst heal sauve les alliés projetés au mur avant qu'il enchaîne le marteau. Après la charge, elle resoigne pendant qu'il est exposé sans bouclier.",
+    ("mizuki", "tracer"):      "Mizuki soigne ses alliés plus vite que Tracer ne peut les tuer sur une seule cible — Tracer a besoin de vider ses 150 balles pour éliminer, et Mizuki restaure les HP entre chaque clip. Tracer doit changer de cible en permanence, ce qui réduit son efficacité.",
+    ("mizuki", "genji"):       "Mizuki maintient ses alliés en vie pendant le combo de Genji — ses soins rapides annulent son burst sur une cible, forçant Genji à se retirer sans élimination ou à rester engagé trop longtemps. Elle transforme chaque dive de Genji en risque pour lui.",
+    ("mizuki", "wrecking-ball"):"Mizuki soigne l'équipe dispersée par Wrecking Ball — même quand Ball projette tout le monde dans des directions différentes, sa portée de soins couvre la zone pour stabiliser les HP. La disruption de Ball fonctionne moins bien si personne ne meurt de l'isolement.",
+    ("mizuki", "ashe"):        "Mizuki contre Ashe en soignant les alliés pris dans ses lignes de mire — ses soins constants tiennent les alliés en vie entre les tirs chargés. B.O.B. fonctionne moins bien quand personne ne tombe bas assez longtemps pour être éliminé.",
+    ("mizuki", "hanzo"):       "Mizuki annule les picks de Hanzo en soignant les alliés à HP partiels avant qu'il recharge — ses flèches chargées sont puissantes mais lentes à préparer. Mizuki réduit la fenêtre où ses alliés sont vulnérables entre les échanges.",
+    # ── Wuyang (support défensif, boucliers et utilitaires de protection) ────
+    ("wuyang", "genji"):       "Wuyang place son bouclier défensif sur l'allié ciblé par Genji juste avant que le combo arrive — le bouclier absorbe la première passe et donne le temps à l'allié de se repositionner. Genji s'attend à one-combo une cible nue, pas une cible bouclée.",
+    ("wuyang", "tracer"):      "Wuyang réagit à la Bombe à impulsion de Tracer avec son utilitaire défensif — dès que Tracer colle la bombe il active la protection sur l'allié ciblé, ce qui réduit ou annule l'explosion. Tracer gaspille son ulti sans élimination.",
+    ("wuyang", "sombra"):      "Wuyang maintient ses alliés hackés en vie avec ses boucliers passifs — même sans leurs capacités ils ont la protection de Wuyang pour survivre les 1,5 secondes du hack. Sombra perd son avantage si les alliés hackés ne meurent pas.",
+    ("wuyang", "roadhog"):     "Wuyang bouclier l'allié dans la ligne de mire de Roadhog avant le crochet — si l'allié a un bouclier actif au moment du combo crochet/Cochon entier il survit. Garde ton utilitaire pour réagir dès que Roadhog lève son crochet.",
+    ("wuyang", "widowmaker"):  "Wuyang distribue ses boucliers défensifs en rotation sur les alliés exposés — Widowmaker a besoin d'une cible non bouclée pour confirmer son pick. Elle doit attendre la fin du bouclier pour viser, ce qui lui fait perdre son timing.",
+    ("wuyang", "ashe"):        "Wuyang protège ses alliés des tirs chargés d'Ashe avec ses boucliers — elle a besoin de 0,5 seconde pour charger, et pendant ce temps Wuyang peut activer sa protection. B.O.B. ne peut pas être bouclé mais les alliés vivants le gèrent ensemble.",
+    ("wuyang", "hanzo"):       "Wuyang réagit aux flèches chargées de Hanzo en bouclant les alliés visibles — ses flèches one-shot les 200 HP mais pas une cible avec bouclier actif. Tourne tes boucliers sur les alliés les plus exposés à sa sightline.",
+    ("wuyang", "freja"):       "Wuyang bloque le burst de Freja au moment où elle arrive sur la backline — son bouclier sur le soignant visé lui donne le temps de reculer. Freja perd son momentum si sa première attaque ne tue pas.",
+    # ── Jetpack Cat (support aérien, soins depuis les hauteurs) ──────────────
+    ("jetpack-cat", "genji"):  "Jetpack Cat soigne ses alliés depuis les airs, hors d'atteinte des shurikens de Genji — il maintient le niveau de HP des alliés pendant toute la séquence du combo. Genji doit one-combo sa cible sinon Jetpack Cat resoigne avant qu'il recharge.",
+    ("jetpack-cat", "tracer"): "Jetpack Cat repositionne rapidement ses soins depuis les airs pour suivre Tracer qui change de cible — dès que Tracer vide ses balles sur un allié, Jetpack Cat est déjà au-dessus pour restaurer les HP. Tracer ne peut pas épuiser les soins aériens.",
+    ("jetpack-cat", "sombra"): "Jetpack Cat est difficile à hack en altitude — Sombra doit monter à portée hack (15m) mais Jetpack Cat voit l'approche depuis les hauteurs. Même si hackée, elle reste en l'air et garde sa portée de soins.",
+    ("jetpack-cat", "roadhog"): "Jetpack Cat est impossible à crocheter depuis les airs — Roadhog a besoin d'une cible au sol pour son crochet, et Jetpack Cat soigne ses alliés crochétés depuis une position hors d'atteinte. Il force Roadhog à passer à un autre style.",
+    ("jetpack-cat", "ashe"):   "Jetpack Cat soigne ses alliés depuis un angle vertical qu'Ashe ne couvre pas — elle vise horizontalement et B.O.B. ne peut pas cibler les hauteurs. Depuis les airs, Jetpack Cat annule ses picks en maintenant les HP à niveau.",
+    ("jetpack-cat", "hanzo"):  "Jetpack Cat reste en mouvement aérien perpétuel ce qui rend le tir chargé de Hanzo quasi impossible — il a besoin d'une fenêtre de 0,5 seconde sur une cible stable. Depuis les airs Jetpack Cat est une cible trop erratique pour ses flèches.",
+    ("jetpack-cat", "bastion"): "Jetpack Cat soigne ses alliés depuis un angle que Bastion en mode Artillerie ne couvre pas facilement — Bastion est statique et vise horizontalement. Un soignant aérien rend son volume de feu moins décisif.",
+    ("jetpack-cat", "cassidy"): "Jetpack Cat en altitude échappe au Flashbang de Cassidy — la grenade doit atterrir à ses pieds et il est trop haut. Ses alliés flashbangés restent soignés pendant la période d'étourdissement.",
+    # ── Freja (DPS mobile à haute vélocité, burst rapide) ────────────────────
+    ("freja", "zenyatta"):     "Freja arrive sur Zenyatta en moins d'une seconde grâce à sa vitesse de déplacement — il n'a pas d'outil de fuite et ses 200 HP fondent en deux échanges à courte portée. Approche par un angle oblique pour éviter son Discord Orb initial.",
+    ("freja", "widowmaker"):   "Freja ferme la distance sur Widowmaker avant qu'elle charge son tir — elle a besoin de 0,7 seconde pour un tir chargé, et Freja parcourt cette distance en 0,5 seconde. Approche entre ses tirs, pas pendant la charge.",
+    ("freja", "ana"):          "Freja arrive sur Ana trop vite pour qu'elle place sa Fléchette soporifique — le projectile met 0,3 seconde à l'atteindre et Freja est déjà au contact. Si Ana rate son sleep elle n'a plus d'outil pour survivre seule.",
+    ("freja", "mercy"):        "Freja suit Mercy dans chaque Guardian Angel grâce à sa vitesse de déplacement — même quand Mercy saute d'allié en allié Freja ferme la distance. Attaque au moment où elle atterrit, avant qu'elle enclenche le prochain saut.",
+    ("freja", "lucio"):        "Freja rattrape Lucio en mur-ride grâce à sa vitesse de base supérieure — même en Boost de vitesse il ne crée pas assez de distance. Coupe sa trajectoire sur le mur plutôt que de le poursuivre en ligne droite.",
+    ("freja", "torbjorn"):     "Freja rush sur Torbjörn avant qu'il déploie sa tourelle — elle prend 3 secondes à s'installer et Freja arrive en 1 seconde. Sans tourelle active Torbjörn est un DPS fragile sans mobilité.",
+    ("freja", "bastion"):      "Freja flanque Bastion depuis son angle mort — en mode Artillerie il ne peut pas pivoter rapidement et son arc de tir frontal ne couvre pas les côtés. Approche par le flanc droit ou gauche, jamais de face.",
+    ("freja", "lifeweaver"):   "Freja élimine Lifeweaver avant qu'il utilise son Tiraillement végétal — la vitesse de Freja ne lui laisse pas le temps d'activer la capacité. Même s'il téléporte un allié, Freja s'en prend directement à lui.",
+    # ── Sierra (DPS flanqueur précis, angles perpendiculaires) ───────────────
+    ("sierra", "zenyatta"):    "Sierra cible Zenyatta depuis un flanc perpendiculaire à sa ligne de mire — il est occupé à viser la frontline et ne voit pas l'angle latéral. Depuis le flanc il ne peut pas placer son Discord Orb à temps et ses 200 HP ne résistent pas.",
+    ("sierra", "widowmaker"):  "Sierra prend un angle perpendiculaire à la sightline de Widowmaker — elle vise dans une direction et Sierra approche depuis le côté. Widowmaker doit pivoter de 90° pour répondre, ce qui lui coûte 1 seconde qu'elle n'a pas.",
+    ("sierra", "ana"):         "Sierra approche Ana depuis son angle aveugle — le flanc opposé à sa ligne de soins. Si Ana ne la voit pas arriver, sa Fléchette soporifique doit être tirée en réaction, pas en anticipation, ce qui réduit ses chances de toucher.",
+    ("sierra", "bastion"):     "Sierra contourne Bastion à 90° depuis son flanc — en mode Artillerie son arc de rotation est limité. Approche par le côté et attaque sa tranche arrière où il ne peut pas répondre rapidement.",
+    ("sierra", "torbjorn"):    "Sierra prend la tourelle de Torbjörn depuis un angle qu'elle ne couvre pas — les tourelles ont un angle de tir frontal limité. Entre dans sa zone morte par le flanc et détruis-la avant que Torbjörn pivote pour se défendre.",
+    ("sierra", "lucio"):       "Sierra coupe la route de Lucio sur son mur en s'interposant sur son axe de déplacement — elle anticipe sa trajectoire et l'attend au lieu de le poursuivre. Un Lucio intercepté n'a plus de vitesse pour s'échapper.",
+    ("sierra", "mercy"):       "Sierra anticipe les Guardian Angels de Mercy depuis le flanc — elle observe où Mercy va sauter et se positionne sur cet allié avant l'atterrissage. Mercy atterrit directement dans l'angle de Sierra.",
+    ("sierra", "lifeweaver"):  "Sierra élimine Lifeweaver depuis le flanc avant qu'il réagisse — son Tiraillement végétal est une compétence à activer, pas un réflexe. Depuis l'angle latéral il ne la voit pas assez tôt pour l'utiliser.",
+    # ── Vendetta (DPS assassin, burst instantané, flanc furtif) ──────────────
+    ("vendetta", "zenyatta"):  "Vendetta arrive dans le dos de Zenyatta sans être détecté — il enchaîne son burst avant que Zenyatta place le Discord Orb. Ses 200 HP ne résistent pas à un burst de flanqueur depuis le dos, et il n'a aucune compétence de fuite.",
+    ("vendetta", "widowmaker"):"Vendetta apparaît dans l'angle mort de Widowmaker — elle vise vers la frontline et ne couvre pas son dos. Approche depuis derrière sa position en longeant les bords de la map, elle n'a aucune compétence de mêlée pour se défendre.",
+    ("vendetta", "ana"):       "Vendetta arrive trop vite pour qu'Ana place sa Fléchette soporifique avec précision — depuis le dos elle doit pivoter de 180° avant de tirer, ce qui lui laisse 0,3 seconde. Si elle rate le sleep elle n'a plus rien pour survivre seule.",
+    ("vendetta", "reinhardt"): "Vendetta contourne le bouclier de Reinhardt par les côtés pour atteindre la backline — Reinhardt ne peut pas pivoter avec son bouclier pour couvrir tous les angles. Pendant qu'il fait face à la frontline Vendetta est déjà derrière.",
+    ("vendetta", "bastion"):   "Vendetta attaque Bastion sous son angle mort latéral — en mode Artillerie il ne peut pas pivoter rapidement et son tourret ne couvre pas les flancs. Entre à 90° de sa ligne de tir et vide ton burst avant qu'il réagisse.",
+    ("vendetta", "sigma"):     "Vendetta passe les boucliers de Sigma en approchant par les angles non couverts — son bouclier est unidirectionnel et Vendetta contourne par le flanc opposé. Sigma n'a pas d'outil de mêlée pour se défendre une fois contourné.",
+    ("vendetta", "mercy"):     "Vendetta traque Mercy dans chaque Guardian Angel — sa mobilité de flanqueur lui permet de suivre ses déplacements entre alliés. Elle atterrit toujours quelque part, et Vendetta l'attend à destination.",
+    ("vendetta", "lifeweaver"):"Vendetta élimine Lifeweaver avant qu'il puisse téléporter un allié — son burst est instantané et Lifeweaver doit activer manuellement son Tiraillement végétal. Un Lifeweaver surpris depuis le flanc n'a pas le temps d'activer quoi que ce soit.",
 
     # ── Domina (tank agressif, haute pression frontale) ────────────────────────
     ("domina", "ashe"):        "Domina s'avance sur Ashe en absorbant ses tirs — force-la à reculer et à quitter sa position longue portée. Joue agressif pour couper sa ligne de mire.",
@@ -596,19 +609,20 @@ MATCHUP_REASONS = {
     ("domina", "junkrat"):     "Domina s'approche de Junkrat pour invalider ses grenades en arc. Au CàC ses grenades lui font autant de dégâts à lui qu'à toi.",
 
     # ── Hazard (tank mobile, contrôle vertical) ────────────────────────────────
-    ("hazard", "hanzo"):       "Hazard monte sur les hauteurs pour flanquer Hanzo depuis son propre angle. Hazard prend les positions verticales avant lui — il ne peut pas viser en bas efficacement.",
-    ("hazard", "junkrat"):     "Hazard plonge sur Junkrat depuis les airs où ses grenades en arc ne peuvent pas te suivre. Approche-le par le dessus ou par les flancs élevés.",
-    ("hazard", "sombra"):      "Hazard reste mobile pour que Sombra ne puisse pas le hack facilement. Utilise ta mobilité verticale pour changer de niveau — Sombra suit mal les angles aériens.",
+    ("hazard", "hanzo"):       "Hazard monte sur les hauteurs avant Hanzo et occupe ses angles de sightline — Hanzo ne peut pas viser vers le bas sous ses pieds si Hazard est sur le même rebord. Pose des piques dans la zone où Hanzo veut se positionner pour l'en chasser.",
+    ("hazard", "junkrat"):     "Hazard plonge sur Junkrat depuis les airs là où ses grenades en arc ne peuvent pas monter — ses projectiles suivent une courbe vers le bas et ne peuvent pas atteindre une cible qui approche par le dessus. Approche en angle aérien steep, pas en ligne droite.",
+    ("hazard", "sombra"):      "Hazard change constamment de niveau vertical pour sortir de la portée hack de Sombra — elle doit rester à moins de 15m pendant 0,65 seconde, et Hazard interrompt cette fenêtre en montant ou descendant. Reste toujours en mouvement vertical.",
+    ("hazard", "anran"):       "Hazard dive sur Anran qui n'a aucune mobilité défensive pour fuir — il encaisse ses tirs en approchant et l'atteint avant qu'il vide son chargeur. Anran perd toute efficacité dès qu'une cible est sur lui.",
 
     # ── Emre (DPS mobile et résilient) ────────────────────────────────────────
-    ("emre", "ashe"):          "Emre survit aux tirs d'Ashe grâce à ses capacités d'esquive. Joue en couverture, ressors pour riposter entre ses recharges — elle reload lentement.",
-    ("emre", "soldier-76"):    "Emre contre Soldat:76 en zigzaguant pour éviter ses rafales. Sa précision diminue sur les cibles mobiles — reste en mouvement constant.",
-    ("emre", "hanzo"):         "Emre esquive les flèches de Hanzo grâce à sa mobilité. Change de direction imprévisiblement — ses flèches chargées ratent les cibles rapides.",
-    ("emre", "junkrat"):       "Emre survit aux combos de Junkrat en restant mobile. Ses grenades en arc sont inefficaces contre une cible qui change constamment d'altitude.",
-    ("emre", "pharah"):        "Emre punit Pharah quand elle descend au sol. Maintiens une pression constante à mi-portée — elle doit atterrir pour recharger.",
-    ("emre", "mercy"):         "Emre chasse Mercy grâce à sa survie et mobilité. Elle ne peut pas rester en vol indéfiniment — suis-la jusqu'à l'éliminer.",
-    ("emre", "sombra"):        "Emre est difficile à one-shot même après un hack. Ses capacités passives restent actives — Sombra a du mal à l'éliminer seule sans suivi d'équipe.",
-    ("emre", "echo"):          "Emre punit Echo au sol — elle ne peut pas copier une cible qu'elle ne peut pas atteindre. Reste actif sur elle pour l'empêcher d'atterrir sereinement.",
+    ("emre", "ashe"):          "Emre sort de couverture entre les tirs chargés d'Ashe — elle met 0,5 seconde à charger et recharge lentement après. Sa survie lui permet d'absorber un tir non chargé sans être éliminé, puis il ferme la distance pendant sa recharge.",
+    ("emre", "soldier-76"):    "Emre zigzague latéralement pour sortir du cone de précision des rafales de Soldat:76 — sa précision chute sur les cibles qui se déplacent perpendiculairement. Un Emre qui bouge en oblique force Soldat:76 à pulser son Biostimulant défensivement.",
+    ("emre", "hanzo"):         "Emre change de direction imprévisiblement toutes les 0,5 secondes — Hanzo doit anticiper la position de sa cible lors du tir, et une cible qui change d'axe constamment ne peut pas être anticipée. Sa survie absorbe une flèche non chargée.",
+    ("emre", "junkrat"):       "Emre change constamment d'altitude et de direction, rendant les grenades en arc de Junkrat quasi impossibles à placer — elles doivent atterrir à ses pieds et Emre n'est jamais là où Junkrat vise. Sa survie absorbe les dégâts de zone partiels.",
+    ("emre", "pharah"):        "Emre punit Pharah quand elle doit atterrir pour recharger — elle ne peut pas rester en l'air indéfiniment. Maintiens une pression constante à mi-portée pour l'empêcher de prendre des angles aériens sûrs.",
+    ("emre", "mercy"):         "Emre suit Mercy dans ses Guardian Angels grâce à sa mobilité — elle doit toujours atterrir quelque part et Emre absorbe ses tirs défensifs avec sa survie. Suis-la de Guardian Angel en Guardian Angel, elle n'a pas assez de fuel pour fuir indéfiniment.",
+    ("emre", "sombra"):        "Emre est impossible à one-shot après un hack — ses mécaniques de survie sont passives et restent actives même sans capacités. Sombra a besoin d'un suivi d'équipe immédiat pour l'éliminer, et ce suivi est souvent absent.",
+    ("emre", "echo"):          "Emre punit Echo quand elle doit atterrir pour attaquer — elle ne peut pas combattre efficacement en vol continu. Reste sur elle au sol, sa survie lui permet de rester dans l'échange jusqu'à ce qu'elle soit éliminée.",
 
     # ── Sojourn vs Hanzo ──────────────────────────────────────────────────────
     ("sojourn", "hanzo"):      "Sojourn bat Hanzo au duel longue portée grâce à sa glissade. Utilise la glissade pour esquiver ses flèches chargées et réponds avec un tir chargé — il ne peut pas suivre une cible mobile.",
@@ -620,9 +634,6 @@ MATCHUP_REASONS = {
     ("kiriko", "junkrat"):     "Kiriko téléporte ses alliés hors des zones de combo de Junkrat. Utilise Suzu pour nettoyer les dégâts en cours — son pneu survie si toute l'équipe est soignée.",
     ("kiriko", "symmetra"):    "Kiriko téléporte ses alliés hors des rayons de Symmetra. Suzu nettoie les ralentissements — garde ta téléportation pour sortir les alliés pris dans ses tourelles.",
     ("kiriko", "torbjorn"):    "Kiriko maintient ses alliés en vie sous le feu de la tourelle de Torbjörn. Utilise Suzu pour annuler les dégâts de Surcharge — son ulti dure 6 secondes.",
-
-    # ── Reinhardt vs Torbjörn ─────────────────────────────────────────────────
-    ("reinhardt", "torbjorn"):  "Reinhardt avance avec le bouclier pour annuler la tourelle. Une fois au contact, Torbjörn ne peut rien faire — son marteau le détruit avant qu'il réagisse.",
 
     # ── Zenyatta vs compositions fermées ──────────────────────────────────────
     ("zenyatta", "symmetra"):  "Zenyatta pose l'Orbe de discorde sur Symmetra — chaque allié la détruit en quelques tirs. Ses tourelles fondent si tous les alliés ont l'Orbe d'harmonie.",
@@ -646,8 +657,16 @@ MATCHUP_REASONS = {
     ("ashe", "mercy"):         "Ashe contre Mercy car B.O.B. la force à ne plus bouger pour soigner. Envoie B.O.B. sur la Mercy — elle doit fuir et ne peut plus faire de Guardian Angel.",
     ("ashe", "widowmaker"):    "Ashe bat Widowmaker au duel car sa cadence de tir est plus élevée. Joue en couverture, tire entre ses recharges — tu gagnes le duel d'attrition.",
 
-    # ── Anran vs compositions variées ─────────────────────────────────────────
-    ("anran", "widowmaker"):   "Anran punit Widowmaker depuis la mi-portée — sa cadence de tir la déborde avant qu'elle recharge. Reste derrière une couverture et tire entre ses rechargements.",
+    # ── Anran (DPS poke longue portée, haute cadence, cible les statiques) ───
+    ("anran", "widowmaker"):   "Anran punit Widowmaker depuis la mi-portée — sa cadence de tir élevée la déborde avant qu'elle recharge son tir chargé. Reste en couverture et expose-toi seulement entre ses rechargements pour accumuler les dégâts.",
+    ("anran", "zenyatta"):     "Anran harcèle Zenyatta depuis la mi-portée avec son taux de tir élevé — ses 200 HP ne résistent pas longtemps à un poke soutenu. Zenyatta doit se cacher pour soigner, ce qui coupe ses soins sur l'équipe.",
+    ("anran", "ana"):          "Anran force Ana à se mettre à couvert avec son poke continu — elle ne peut pas soigner et esquiver en même temps. Chaque seconde qu'elle passe en couverture est une seconde sans soins pour son équipe.",
+    ("anran", "mercy"):        "Anran traque Mercy avec son poke à haute cadence — elle ne peut pas rester statique pour soigner sans prendre des dégâts constants. Résurrection en plein poke d'Anran est très risquée, elle ne peut pas canal-caster sereinement.",
+    ("anran", "orisa"):        "Anran accumule des dégâts sur Orisa malgré son armure — sa cadence de tir élevée contourne mieux l'armure que les gros projectiles espacés. Poke derrière une couverture et profite que son Bouclier de javeline est en cooldown.",
+    ("anran", "sigma"):        "Anran vide le bouclier de Sigma plus vite qu'il ne se régénère grâce à sa cadence de tir — le bouclier a 1500 HP et une régénération différée. Poke en continu pour l'épuiser, puis expose ton équipe sur Sigma sans protection.",
+    ("anran", "bastion"):      "Anran poke Bastion depuis la mi-portée pendant qu'il est statique en mode Artillerie — Bastion ne peut pas se repositionner et Anran accumule des dégâts depuis une couverture à mi-portée. Sa cadence de tir rivalise avec le volume de feu de Bastion à distance.",
+    ("anran", "reinhardt"):    "Anran poke le bouclier de Reinhardt jusqu'à l'épuiser — le bouclier a 1600 HP et Anran a la cadence pour le vider. Une fois le bouclier cassé Reinhardt est exposé et son équipe n'a plus de protection frontale.",
+    ("anran", "lifeweaver"):   "Anran traque Lifeweaver avec son poke en continu — il ne peut pas soigner et esquiver simultanément à mi-portée. Un Lifeweaver sous pression constante fait des Tiraillements végétaux précipités.",
 
     # ── Genji vs flanqueurs ────────────────────────────────────────────────────
     ("genji", "sombra"):       "Genji contre Sombra car il peut deflect ses tirs quand elle sort de furtivité. Garde ton deflect pour le moment où elle hack — retourne ses dégâts sur elle.",
