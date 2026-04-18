@@ -1,0 +1,94 @@
+[
+  {
+    "model": "heroes.patchnote",
+    "pk": 1,
+    "fields": {
+      "version": "14.1",
+      "date": "2026-04-15",
+      "title": "Patch 14.1 — Équilibrage général",
+      "summary": "Ajustements d'équilibrage ciblant les héros surpuissants du méta Saison 14. Nerfs sur Mauga et Ana, buffs sur des héros sous-utilisés.",
+      "is_latest": true,
+      "changes": [
+        { "hero_slug": "mauga",     "type": "nerf",   "text": "PV réduits de 550 à 500. Ignition : rayon réduit de 5m à 4m." },
+        { "hero_slug": "mauga",     "type": "nerf",   "text": "Cage de combat : durée réduite de 4s à 3.5s." },
+        { "hero_slug": "ana",       "type": "nerf",   "text": "Grenade biotique : boost de soins réduit de 50% à 35%." },
+        { "hero_slug": "ana",       "type": "nerf",   "text": "Fléchette soporifique : cooldown augmenté de 12s à 14s." },
+        { "hero_slug": "sojourn",   "type": "nerf",   "text": "Glissade : durée réduite de 1.5s à 1.2s." },
+        { "hero_slug": "kiriko",    "type": "nerf",   "text": "Suzu : cooldown augmenté de 14s à 16s." },
+        { "hero_slug": "reinhardt", "type": "buff",   "text": "Smash de terrain : rayon augmenté de 5m à 5.5m." },
+        { "hero_slug": "reinhardt", "type": "buff",   "text": "Bouclier de feu : PV augmentés de 1600 à 1800." },
+        { "hero_slug": "zarya",     "type": "buff",   "text": "Bouclier personnel : durée augmentée de 2s à 2.2s." },
+        { "hero_slug": "cassidy",   "type": "buff",   "text": "Fan du Marteau : dégâts par balle augmentés de 45 à 48." },
+        { "hero_slug": "moira",     "type": "buff",   "text": "Essorage : dégâts augmentés de 50/s à 55/s." },
+        { "hero_slug": "mercy",     "type": "fix",    "text": "Correction : Guardian Angel ne se coupe plus prématurément sur terrain irrégulier." },
+        { "hero_slug": "hazard",    "type": "buff",   "text": "Nouveau héros : ajustements de lancement — PV augmentés de 450 à 475." }
+      ]
+    }
+  },
+  {
+    "model": "heroes.patchnote",
+    "pk": 2,
+    "fields": {
+      "version": "14.0",
+      "date": "2026-03-25",
+      "title": "Patch 14.0 — Lancement Saison 14",
+      "summary": "Lancement de la Saison 14 avec l'arrivée de Hazard. Rework partiel de Ramattra et d'Orisa. Buffs généraux sur les héros de style poke.",
+      "is_latest": false,
+      "changes": [
+        { "hero_slug": "hazard",    "type": "rework", "text": "Nouveau héros disponible — Tank mobile avec contrôle vertical et piques défensifs." },
+        { "hero_slug": "ramattra",  "type": "rework", "text": "Form du néant : la durée n'est plus limitée à 8s. Se termine quand Ramattra n'inflige plus de dégâts pendant 3s consécutives." },
+        { "hero_slug": "ramattra",  "type": "buff",   "text": "Annihilation : dégâts augmentés de 65/s à 70/s." },
+        { "hero_slug": "orisa",     "type": "rework", "text": "Fortify : réduit désormais tous les dégâts subis de 40% (au lieu d'annuler les knockbacks uniquement)." },
+        { "hero_slug": "orisa",     "type": "nerf",   "text": "Javelin Spin : dégâts réduits de 60 à 50." },
+        { "hero_slug": "sigma",     "type": "buff",   "text": "Flux gravitationnel : rayon augmenté de 3m à 3.5m." },
+        { "hero_slug": "ashe",      "type": "buff",   "text": "Carabine : recul réduit de 15%. Améliore la précision en tir rapide." },
+        { "hero_slug": "baptiste",  "type": "buff",   "text": "Matrice d'amplification : durée augmentée de 6s à 7s." },
+        { "hero_slug": "widowmaker","type": "nerf",   "text": "Tir chargé : délai de charge augmenté de 0.8s à 0.9s." },
+        { "hero_slug": "genji",     "type": "fix",    "text": "Correction : Déflexion ne bloquait pas correctement les projectiles de Sigma." }
+      ]
+    }
+  },
+  {
+    "model": "heroes.patchnote",
+    "pk": 3,
+    "fields": {
+      "version": "13.5",
+      "date": "2026-02-18",
+      "title": "Patch 13.5 — Mid-season Saison 13",
+      "summary": "Patch de mi-saison avec des ajustements sur les nouveaux héros Emre et Mizuki introduits en Saison 13. Nerfs sur la dive.",
+      "is_latest": false,
+      "changes": [
+        { "hero_slug": "emre",      "type": "nerf",   "text": "Mécaniques de survie passives réduites de 20%. Son kit reste fort mais moins forgiving." },
+        { "hero_slug": "mizuki",    "type": "nerf",   "text": "Portée des soins réduite de 20m à 18m. Cooldown de sa compétence de mobilité augmenté de 1s." },
+        { "hero_slug": "winston",   "type": "nerf",   "text": "Saut propulseur : cooldown augmenté de 5s à 5.5s." },
+        { "hero_slug": "tracer",    "type": "nerf",   "text": "Clin d'œil : charges passent de 3 à 2. Recharge accélérée de 10%." },
+        { "hero_slug": "lucio",     "type": "nerf",   "text": "Mur de son : PV du bouclier réduits de 1500 à 1250." },
+        { "hero_slug": "dva",       "type": "buff",   "text": "Missiles micro : dégâts par missile augmentés de 6 à 7." },
+        { "hero_slug": "roadhog",   "type": "buff",   "text": "Crochet : portée augmentée de 15m à 16m." },
+        { "hero_slug": "symmetra",  "type": "buff",   "text": "Tourelle de photons : PV augmentés de 30 à 40." },
+        { "hero_slug": "torbjorn",  "type": "buff",   "text": "Tourelle : cadence de tir augmentée de 5%." }
+      ]
+    }
+  },
+  {
+    "model": "heroes.patchnote",
+    "pk": 4,
+    "fields": {
+      "version": "13.0",
+      "date": "2026-01-07",
+      "title": "Patch 13.0 — Lancement Saison 13",
+      "summary": "Saison 13 avec l'arrivée de Emre et Mizuki. Rework majeur de Sombra et Symmetra. Ajustements d'équilibrage généraux.",
+      "is_latest": false,
+      "changes": [
+        { "hero_slug": "emre",      "type": "rework", "text": "Nouveau héros disponible — DPS mobile et résilient avec mécaniques de survie passives." },
+        { "hero_slug": "mizuki",    "type": "rework", "text": "Nouveau héros disponible — Support mobile avec soins à la chaîne et compétences de zone." },
+        { "hero_slug": "sombra",    "type": "rework", "text": "Hack : ne silence plus les capacités passives. Durée réduite de 1.75s à 1.5s mais cooldown réduit de 6s à 4s." },
+        { "hero_slug": "symmetra",  "type": "rework", "text": "Téléporteur : plus de limite de charge. Se détruit après 30s ou si Symmetra le replace." },
+        { "hero_slug": "junkrat",   "type": "buff",   "text": "Lance-grenades : vitesse des projectiles augmentée de 10%." },
+        { "hero_slug": "mei",       "type": "buff",   "text": "Tempête de glace : vitesse de ralentissement augmentée." },
+        { "hero_slug": "pharah",    "type": "nerf",   "text": "Lance-roquettes : splash damage réduit de 80 à 70." },
+        { "hero_slug": "ana",       "type": "buff",   "text": "Tir de sniper : temps de rechargement réduit de 0.1s." }
+      ]
+    }
+  }
+]
