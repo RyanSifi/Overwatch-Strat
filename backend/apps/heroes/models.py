@@ -161,6 +161,7 @@ class Map(models.Model):
         ("hybrid", "Hybrid"),
         ("push", "Push"),
         ("flashpoint", "Flashpoint"),
+        ("clash", "Clash"),
     ]
 
     name = models.CharField(max_length=50, verbose_name="Nom")

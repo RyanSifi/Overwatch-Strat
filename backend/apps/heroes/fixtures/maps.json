@@ -1066,5 +1066,81 @@
         }
       ]
     }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 29,
+    "fields": {
+      "name": "Hanaoka",
+      "slug": "hanaoka",
+      "map_type": "clash",
+      "phases": [
+        {
+          "name": "Point A — Temple",
+          "notes": "Temple intérieur étroit, favorise le brawl et les tanks à courte portée. Winston et D.Va très efficaces.",
+          "recommended": {
+            "tank": ["winston", "dva"],
+            "dps": ["tracer", "reaper"],
+            "support": ["lucio", "kiriko"]
+          }
+        },
+        {
+          "name": "Point B — Jardin",
+          "notes": "Jardin ouvert avec couloirs latéraux. Équilibre entre poke et combat rapproché. Reinhardt ou Sigma selon la comp adverse.",
+          "recommended": {
+            "tank": ["reinhardt", "sigma"],
+            "dps": ["soldier-76", "cassidy"],
+            "support": ["ana", "mercy"]
+          }
+        },
+        {
+          "name": "Point C — Place centrale",
+          "notes": "Point central décisif, accès multiple depuis 3 axes. Orisa excelle pour tenir le point, Pharah utile pour couvture aérienne.",
+          "recommended": {
+            "tank": ["orisa", "mauga"],
+            "dps": ["pharah", "junkrat"],
+            "support": ["baptiste", "lucio"]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "heroes.map",
+    "pk": 30,
+    "fields": {
+      "name": "Throne of Anubis",
+      "slug": "throne-of-anubis",
+      "map_type": "clash",
+      "phases": [
+        {
+          "name": "Point A — Sanctuaire",
+          "notes": "Sanctuaire avec colonnades offrant couverture. Sombra peut disable les flancs adverses. Brawl compact favorisé.",
+          "recommended": {
+            "tank": ["dva", "junker-queen"],
+            "dps": ["sombra", "reaper"],
+            "support": ["lucio", "moira"]
+          }
+        },
+        {
+          "name": "Point B — Trône",
+          "notes": "Grande salle centrale ouverte, visibilité maximale. Widowmaker et Ashe dominent depuis les balcons. Sigma idéal pour le shield.",
+          "recommended": {
+            "tank": ["sigma", "zarya"],
+            "dps": ["widowmaker", "ashe"],
+            "support": ["zenyatta", "ana"]
+          }
+        },
+        {
+          "name": "Point C — Crypte",
+          "notes": "Couloirs étroits menant à la crypte. Close range dominant, Roadhog et Reaper exceptionnels. Kirik pour sustain.",
+          "recommended": {
+            "tank": ["roadhog", "reinhardt"],
+            "dps": ["reaper", "mei"],
+            "support": ["kiriko", "lucio"]
+          }
+        }
+      ]
+    }
   }
 ]

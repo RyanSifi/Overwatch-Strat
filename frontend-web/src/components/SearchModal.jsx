@@ -11,8 +11,8 @@ const ROLE_COLOR  = { tank: "#00C2FF", dps: "#F4922B", support: "#69db7c" };
 const DIFF_COLOR  = { 1: "#69db7c", 2: "#F4922B", 3: "#FF4655" };
 const DIFF_LABEL  = { 1: "Facile", 2: "Moyen", 3: "Difficile" };
 const ROLE_LABEL  = { tank: "Tank", dps: "DPS", support: "Support" };
-const TYPE_LABEL  = { escort: "Escorte", control: "Contrôle", hybrid: "Hybride", push: "Push", flashpoint: "Flashpoint" };
-const TYPE_EMOJI  = { escort: "🚛", control: "🔵", hybrid: "⚡", push: "🤖", flashpoint: "💥" };
+const TYPE_LABEL  = { escort: "Escorte", control: "Contrôle", hybrid: "Hybride", push: "Push", flashpoint: "Flashpoint", clash: "Clash" };
+const TYPE_EMOJI  = { escort: "🚛", control: "🔵", hybrid: "⚡", push: "🤖", flashpoint: "💥", clash: "⚔️" };
 
 export default function SearchModal({ open, onClose }) {
   const navigate  = useNavigate();

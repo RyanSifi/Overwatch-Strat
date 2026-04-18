@@ -31,6 +31,7 @@ const MAP_TYPE_LABEL = {
   hybrid:     "Hybride",
   push:       "Push",
   flashpoint: "Flashpoint",
+  clash:      "Clash",
 };
 
 const MAP_TYPE_COLOR = {
@@ -39,6 +40,7 @@ const MAP_TYPE_COLOR = {
   hybrid:     "bg-orange-500/20 text-orange-300 border-orange-500/40",
   push:       "bg-green-500/20 text-green-300 border-green-500/40",
   flashpoint: "bg-red-500/20 text-red-300 border-red-500/40",
+  clash:      "bg-yellow-500/20 text-yellow-300 border-yellow-500/40",
 };
 
 // ─── Hero pick card ────────────────────────────────────────────────────────────
