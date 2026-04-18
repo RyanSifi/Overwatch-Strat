@@ -57,9 +57,19 @@ class Hero(models.Model):
     counters = models.JSONField(default=dict, verbose_name="Counters")
     # Points forts/faibles : liste de { "label": str, "rating": "++" | "+" | "-" | "--" }
     traits = models.JSONField(default=list, verbose_name="Traits")
+    DIFFICULTY_CHOICES = [
+        (1, "Facile"),
+        (2, "Moyen"),
+        (3, "Difficile"),
+    ]
+
     # Héros introduits en saison 1 2026 (Domina, Hazard, Anran, Mizuki, Fika)
     is_new = models.BooleanField(default=False, verbose_name="Nouveau héros")
     icon_url = models.URLField(blank=True, verbose_name="URL icône")
+    # Difficulté de prise en main : 1=Facile, 2=Moyen, 3=Difficile
+    difficulty = models.IntegerField(
+        choices=DIFFICULTY_CHOICES, default=2, verbose_name="Difficulté"
+    )
 
     class Meta:
         ordering = ["role", "name"]

@@ -2,6 +2,7 @@ import { useState } from "react";
 import useHeroes from "../hooks/useHeroes";
 import HeroCard from "../components/HeroCard";
 import TierBadge from "../components/TierBadge";
+import DifficultyBadge from "../components/DifficultyBadge";
 import RoleFilter from "../components/RoleFilter";
 import RoleIcon from "../components/RoleIcon";
 import { LoadingSpinner, ErrorMessage, EmptyState } from "../components/LoadingSpinner";
@@ -142,6 +143,17 @@ function HeroDetailPanel({ hero, onClose }) {
           </div>
         )}
       </div>
+
+      {/* Difficulté */}
+      {hero.difficulty && (
+        <div className="flex flex-col gap-1.5 p-3"
+          style={{ background: "rgba(4,7,15,0.5)", border: "1px solid rgba(27,45,79,0.8)", clipPath: "polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)" }}>
+          <span className="text-gray-500 text-xs uppercase tracking-wider" style={{ fontFamily: "Rajdhani, sans-serif" }}>
+            Difficulté de prise en main
+          </span>
+          <DifficultyBadge difficulty={hero.difficulty} detail />
+        </div>
+      )}
 
       {/* Traits ++/+/-/-- */}
       {hero.traits && hero.traits.length > 0 && (
