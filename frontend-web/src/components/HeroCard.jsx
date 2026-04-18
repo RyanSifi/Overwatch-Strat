@@ -3,6 +3,7 @@
  * Design angulaire, bordure colorée par rôle, glow au survol.
  */
 import TierBadge from "./TierBadge";
+import FavoriteButton from "./FavoriteButton";
 
 const ROLE_STYLE = {
   tank:    { border: "#00C2FF", glow: "rgba(0,194,255,0.3)",    bg: "rgba(0,194,255,0.05)"    },
@@ -12,11 +13,12 @@ const ROLE_STYLE = {
 
 export default function HeroCard({
   hero,
-  selected  = false,
-  onClick   = null,
-  showScore = false,
-  score     = null,
-  compact   = false,
+  selected      = false,
+  onClick       = null,
+  showScore     = false,
+  score         = null,
+  compact       = false,
+  showFavorite  = true,
 }) {
   const rs = ROLE_STYLE[hero.role] ?? { border: "#444", glow: "rgba(100,100,100,0.2)", bg: "rgba(100,100,100,0.05)" };
 
@@ -62,6 +64,13 @@ export default function HeroCard({
         >
           NEW
         </span>
+      )}
+
+      {/* Bouton favori — visible au survol */}
+      {showFavorite && (
+        <div className="absolute top-0.5 left-0.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+          <FavoriteButton type="hero" slug={hero.slug} size="sm" />
+        </div>
       )}
 
       <div className={compact ? "p-2" : "p-3"}>

@@ -3,9 +3,11 @@ import useHeroes from "../hooks/useHeroes";
 import HeroCard from "../components/HeroCard";
 import TierBadge from "../components/TierBadge";
 import DifficultyBadge from "../components/DifficultyBadge";
+import FavoriteButton from "../components/FavoriteButton";
 import RoleFilter from "../components/RoleFilter";
 import RoleIcon from "../components/RoleIcon";
 import { LoadingSpinner, ErrorMessage, EmptyState } from "../components/LoadingSpinner";
+import useAppStore from "../store/useAppStore";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -25,6 +27,8 @@ const STYLE_FILTERS = [
   { value: "brawl", label: "Brawl" },
   { value: "poke",  label: "Poke" },
 ];
+
+const ROLE_COLOR = { tank: "#00C2FF", dps: "#F4922B", support: "#69db7c" };
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
@@ -111,13 +115,16 @@ function HeroDetailPanel({ hero, onClose }) {
           </div>
         </div>
 
-        <button
-          onClick={onClose}
-          className="text-gray-500 hover:text-white transition-colors text-xl leading-none flex-shrink-0"
-          aria-label="Fermer"
-        >
-          ×
-        </button>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <FavoriteButton type="hero" slug={hero.slug} size="md" />
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-white transition-colors text-xl leading-none"
+            aria-label="Fermer"
+          >
+            ×
+          </button>
+        </div>
       </div>
 
       {/* Stats row */}
@@ -186,14 +193,17 @@ function HeroDetailPanel({ hero, onClose }) {
 
 export default function TierList() {
   const { heroes, loading, error } = useHeroes();
-  const [roleFilter, setRoleFilter]   = useState(null);
-  const [styleFilter, setStyleFilter] = useState(null);
-  const [selectedHero, setSelectedHero] = useState(null);
+  const favoriteHeroes              = useAppStore((s) => s.favoriteHeroes);
+  const [roleFilter, setRoleFilter]       = useState(null);
+  const [styleFilter, setStyleFilter]     = useState(null);
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [selectedHero, setSelectedHero]   = useState(null);
 
   // ── Filtering ──────────────────────────────────────────────────────────────
   const filtered = heroes.filter((hero) => {
-    if (roleFilter  && hero.role !== roleFilter)                       return false;
-    if (styleFilter && !hero.styles?.includes(styleFilter))           return false;
+    if (roleFilter    && hero.role !== roleFilter)               return false;
+    if (styleFilter   && !hero.styles?.includes(styleFilter))   return false;
+    if (favoritesOnly && !favoriteHeroes.includes(hero.slug))   return false;
     return true;
   });
 
@@ -228,11 +238,36 @@ export default function TierList() {
 
       {/* Filters */}
       <div className="card bg-ow-surface border border-ow-border rounded-xl p-4 space-y-3">
-        <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-between">
           <div className="flex flex-col gap-1.5">
             <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">Rôle</span>
             <RoleFilter value={roleFilter} onChange={setRoleFilter} />
           </div>
+          {/* Favoris toggle */}
+          <button
+            onClick={() => setFavoritesOnly((v) => !v)}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium transition-all border rounded-lg self-end sm:self-auto"
+            style={{
+              background:   favoritesOnly ? "rgba(255,215,0,0.1)" : "transparent",
+              borderColor:  favoritesOnly ? "#FFD700"             : "rgba(27,45,79,0.8)",
+              color:        favoritesOnly ? "#FFD700"             : "rgba(255,255,255,0.4)",
+              boxShadow:    favoritesOnly ? "0 0 12px rgba(255,215,0,0.15)" : "none",
+            }}
+          >
+            <span style={{ fontSize: "14px" }}>{favoritesOnly ? "★" : "☆"}</span>
+            Favoris
+            {favoriteHeroes.length > 0 && (
+              <span
+                className="text-[10px] font-bold px-1.5 py-0.5 rounded-full"
+                style={{
+                  background: favoritesOnly ? "rgba(255,215,0,0.2)" : "rgba(255,255,255,0.06)",
+                  color:      favoritesOnly ? "#FFD700"             : "rgba(255,255,255,0.3)",
+                }}
+              >
+                {favoriteHeroes.length}
+              </span>
+            )}
+          </button>
         </div>
         <div className="flex flex-col gap-1.5">
           <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">Style</span>

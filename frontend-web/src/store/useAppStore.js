@@ -35,14 +35,34 @@ const useAppStore = create(
       resetFilters: () =>
         set({ filters: { role: null, tier: null, style: null } }),
 
+      // ─── Favoris ───────────────────────────────────────────────────────────
+      favoriteHeroes: [],  // slugs des héros favoris
+      favoriteMaps:   [],  // slugs des maps favorites
+      toggleFavoriteHero: (slug) =>
+        set((s) => ({
+          favoriteHeroes: s.favoriteHeroes.includes(slug)
+            ? s.favoriteHeroes.filter((h) => h !== slug)
+            : [...s.favoriteHeroes, slug],
+        })),
+      toggleFavoriteMap: (slug) =>
+        set((s) => ({
+          favoriteMaps: s.favoriteMaps.includes(slug)
+            ? s.favoriteMaps.filter((m) => m !== slug)
+            : [...s.favoriteMaps, slug],
+        })),
+
       // ─── Mode overlay ──────────────────────────────────────────────────────
       overlayMode: false,
       toggleOverlay: () => set((s) => ({ overlayMode: !s.overlayMode })),
     }),
     {
       name: "ow-coach-store",
-      // Ne persiste que l'utilisateur — les héros sont rechargés au démarrage
-      partialize: (state) => ({ user: state.user }),
+      // Persiste : user + favoris (les héros sont rechargés au démarrage)
+      partialize: (state) => ({
+        user:           state.user,
+        favoriteHeroes: state.favoriteHeroes,
+        favoriteMaps:   state.favoriteMaps,
+      }),
     }
   )
 );

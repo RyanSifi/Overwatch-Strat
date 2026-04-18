@@ -7,6 +7,7 @@ import useMaps       from "../hooks/useMaps";
 import { getMapGuide } from "../api/maps";
 import MapSelector   from "../components/MapSelector";
 import TierBadge     from "../components/TierBadge";
+import FavoriteButton from "../components/FavoriteButton";
 import { LoadingSpinner, ErrorMessage, EmptyState } from "../components/LoadingSpinner";
 
 // ─── Config style ──────────────────────────────────────────────────────────────
@@ -215,6 +216,7 @@ export default function Guide() {
               {MAP_TYPE_LABEL[mapInfo.map_type] ?? mapInfo.map_type}
             </span>
             <span className="text-xs text-gray-500">{phases.length} phase{phases.length > 1 ? "s" : ""}</span>
+            <FavoriteButton type="map" slug={selectedSlug} size="md" />
           </div>
         )}
       </div>
