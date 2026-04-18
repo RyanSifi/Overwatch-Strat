@@ -2,6 +2,7 @@
  * Guide — stratégies par map et par phase.
  */
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import useMaps       from "../hooks/useMaps";
 import { getMapGuide } from "../api/maps";
 import MapSelector   from "../components/MapSelector";
@@ -162,8 +163,9 @@ function PhaseCard({ phase, index, total }) {
 // ─── Page principale ───────────────────────────────────────────────────────────
 export default function Guide() {
   const { maps, loading: mapsLoading, error: mapsError } = useMaps();
+  const [searchParams] = useSearchParams();
 
-  const [selectedSlug, setSelectedSlug] = useState(null);
+  const [selectedSlug, setSelectedSlug] = useState(() => searchParams.get("map") || null);
   const [guide,        setGuide]        = useState(null);
   const [guideLoading, setGuideLoading] = useState(false);
   const [guideError,   setGuideError]   = useState(null);

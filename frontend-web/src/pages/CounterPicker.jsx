@@ -2,7 +2,8 @@
  * CounterPicker — sélectionne la composition ennemie et reçoit
  * les suggestions de counters par rôle (tank / dps / support).
  */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import useHeroes           from "../hooks/useHeroes";
 import { suggestCounters } from "../api/heroes";
 import HeroPicker          from "../components/HeroPicker";
@@ -77,8 +78,12 @@ function RoleSection({ role, heroes }) {
 // ─── Page principale ───────────────────────────────────────────────────────────
 export default function CounterPicker() {
   const { heroes, loading: heroesLoading, error: heroesError } = useHeroes();
+  const [searchParams] = useSearchParams();
 
-  const [enemySlugs, setEnemySlugs] = useState([]);
+  const [enemySlugs, setEnemySlugs] = useState(() => {
+    const hero = searchParams.get("hero");
+    return hero ? [hero] : [];
+  });
   const [result,     setResult]     = useState(null);
   const [analyzing,  setAnalyzing]  = useState(false);
   const [error,      setError]      = useState(null);

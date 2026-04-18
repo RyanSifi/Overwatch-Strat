@@ -3,8 +3,9 @@
  * Design inspiré Overwatch 2 — dark navy + orange accent + typographie Rajdhani
  */
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, NavLink, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink, Navigate, useNavigate } from "react-router-dom";
 import useAppStore from "./store/useAppStore";
+import SearchModal from "./components/SearchModal";
 
 import CounterPicker from "./pages/CounterPicker";
 import Guide        from "./pages/Guide";
@@ -32,7 +33,7 @@ function OWLogo() {
   );
 }
 
-function Navbar() {
+function Navbar({ onSearch }) {
   const { user, logout, overlayMode, toggleOverlay } = useAppStore();
   const [scrolled, setScrolled] = useState(false);
 
@@ -77,6 +78,20 @@ function Navbar() {
 
         {/* Séparateur vertical */}
         <div className="h-8 w-px bg-ow-border shrink-0" />
+
+        {/* Bouton recherche */}
+        <button
+          onClick={onSearch}
+          className="hidden md:flex items-center gap-2 px-3 py-1.5 text-gray-500 hover:text-gray-300 transition-colors border border-ow-border hover:border-gray-600"
+          style={{ clipPath: "polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)", fontFamily: "Barlow, sans-serif", fontSize: "12px", minWidth: "160px" }}
+          title="Ctrl+K"
+        >
+          <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span className="flex-1 text-left">Rechercher...</span>
+          <kbd className="text-[10px] border border-ow-border px-1.5 py-0.5 text-gray-600" style={{ fontFamily: "Rajdhani, sans-serif" }}>Ctrl K</kbd>
+        </button>
 
         {/* Navigation */}
         <div className="flex gap-0.5 flex-1">
@@ -145,10 +160,15 @@ function Navbar() {
 
 export default function App() {
   const { overlayMode, toggleOverlay } = useAppStore();
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handler = (e) => {
       if (e.altKey && e.key === "o") toggleOverlay();
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -161,7 +181,8 @@ export default function App() {
           overlayMode ? "max-w-[400px] ml-auto" : ""
         }`}
       >
-        <Navbar />
+        <Navbar onSearch={() => setSearchOpen(true)} />
+        <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
         <main className="px-6 py-6 max-w-7xl mx-auto">
           <Routes>
             <Route path="/"        element={<Navigate to="/counter" replace />} />
