@@ -8,6 +8,8 @@ import useAppStore from "../store/useAppStore";
 import { getMaps } from "../api/maps";
 
 const ROLE_COLOR  = { tank: "#00C2FF", dps: "#F4922B", support: "#69db7c" };
+const DIFF_COLOR  = { 1: "#69db7c", 2: "#F4922B", 3: "#FF4655" };
+const DIFF_LABEL  = { 1: "Facile", 2: "Moyen", 3: "Difficile" };
 const ROLE_LABEL  = { tank: "Tank", dps: "DPS", support: "Support" };
 const TYPE_LABEL  = { escort: "Escorte", control: "Contrôle", hybrid: "Hybride", push: "Push", flashpoint: "Flashpoint" };
 const TYPE_EMOJI  = { escort: "🚛", control: "🔵", hybrid: "⚡", push: "🤖", flashpoint: "💥" };
@@ -170,6 +172,18 @@ export default function SearchModal({ open, onClose }) {
                     >
                       {ROLE_LABEL[hero.role]}
                     </span>
+
+                    {/* Difficulté — 3 barres */}
+                    {hero.difficulty && (
+                      <div className="flex items-center gap-0.5 shrink-0">
+                        {[1,2,3].map(i => (
+                          <div key={i} className="w-2 h-2" style={{
+                            background: i <= hero.difficulty ? DIFF_COLOR[hero.difficulty] : "rgba(255,255,255,0.08)",
+                            clipPath: "polygon(2px 0%, 100% 0%, calc(100% - 2px) 100%, 0% 100%)",
+                          }} />
+                        ))}
+                      </div>
+                    )}
 
                     {/* Tier */}
                     {hero.tier && (
